@@ -9,6 +9,7 @@
   .columns {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
   }
   
   .column {
@@ -17,7 +18,7 @@
   }
   
   .card {
-    height: calc(50vh - 2rem);
+    height: calc(40vh - 2rem);
   }
   
   .card img,
@@ -26,13 +27,25 @@
     overflow-y: auto;
   }
   
+  #options-container {
+    text-align: center;
+    margin-top: 1rem;
+    width: 100%;
+  }
+  
+  #options-container .btn {
+    white-space: normal;
+    word-wrap: break-word;
+    margin: 0.5rem;
+  }
+  
   @media (max-width: 767px) {
     .column {
       max-width: 100%;
     }
   
     .card {
-      height: calc(25vh - 1rem);
+      height: calc(30vh - 1rem);
     }
   }
   
