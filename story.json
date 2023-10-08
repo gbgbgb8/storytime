@@ -1,52 +1,52 @@
 {
     "pages": {
       "1": {
-        "text": "🌙 It's a calm night. After reading a mysterious book, a girl falls into a deep sleep. She soon finds herself waking up not in her cozy bed, but in the heart of a magical castle, shimmering in moonlight. ✨🏰✨ The room she's in is grand, with tapestries of mythical creatures adorning the walls and a crystal chandelier above.",
+        "text": "",
         "metadata": {
-          "Setting": "Moonlit Castle Hall",
-          "Time": "Midnight in Dream World"
+          "Setting": "",
+          "Time": ""
         },
         "options": [
           {
-            "text": "🚪 Approach and open the large wooden door to her left, which has an emblem of a 🐉 dragon.",
+            "text": "",
             "nextPage": "2"
           },
           {
-            "text": "🪄 Explore the room further and look for magical artifacts. There's a mysterious glow coming from one corner.",
+            "text": "",
             "nextPage": "3"
           }
         ]
       },
       "2": {
-        "text": "As the girl opens the dragon-emblazoned door 🚪, a gust of cool wind sweeps her hair. She steps out onto a stone bridge 🌉 overlooking a vast courtyard. The moon 🌙 casts its silvery glow over the grounds, revealing topiary gardens shaped like mythical creatures 🦄🌳 and a sparkling fountain ⛲ with water that seems to change colors. Below the bridge, a gentle river flows, with fireflies 🌌 twinkling above its surface.",
+        "text": "",
         "metadata": {
-          "Setting": "Moonlit Castle Courtyard",
-          "Time": "A few minutes past Midnight in Dream World"
+          "Setting": "",
+          "Time": ""
         },
         "options": [
           {
-            "text": "🎵 Follow the source of the melodic hum, which seems to be coming from a gazebo in the center of the garden.",
+            "text": "",
             "nextPage": "4"
           },
           {
-            "text": "🌊 Head down to the river's edge to catch a firefly or perhaps take a closer look at the water's mystical properties.",
+            "text": "",
             "nextPage": "5"
           }
         ]
       },
       "3": {
-        "text": "Drawn to the mysterious glow in the corner of the room, the girl discovers a floating orb 🔮, pulsating with a gentle light. As she approaches, the orb's glow becomes more intense, and she feels a warm, inviting energy. The surface of the orb shows fleeting images: enchanted forests 🌲✨, flying creatures 🦋, and distant worlds 🌌.",
+        "text": "",
         "metadata": {
-          "Setting": "Magical Room in Moonlit Castle",
-          "Time": "Midnight in Dream World"
+          "Setting": "",
+          "Time": ""
         },
         "options": [
           {
-            "text": "🔮 Touch the orb with her bare hands, hoping to connect with the images and perhaps transport to one of the magical worlds.",
+            "text": "",
             "nextPage": "6"
           },
           {
-            "text": "🪄 Pick up the wand and attempt to channel its power, perhaps to unlock the mysteries of the castle or enhance her abilities in the dream.",
+            "text": "",
             "nextPage": "7"
           }
         ]
