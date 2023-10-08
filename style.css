@@ -1,6 +1,13 @@
 #game-container {
-    max-width: 800px;
     margin: auto;
-    text-align: center;
+  }
+  
+  .img-responsive {
+    width: 100%;
+    height: auto;
+  }
+  
+  .card {
+    margin-bottom: 1rem;
   }
   

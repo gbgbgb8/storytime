@@ -7,17 +7,25 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div id="game-container">
-    <img id="game-image" src="" alt="Game Image" width="100%">
-    <div id="narrative-text" class="card">
-      <div class="card-header">
-        <div class="card-title h5">Narrative</div>
+  <div id="game-container" class="container grid-lg">
+    <div class="columns">
+      <div class="column col-lg-6 col-12">
+        <div class="card">
+          <img id="game-image" src="" alt="Game Image" class="img-responsive">
+        </div>
       </div>
-      <div class="card-body">
+      <div class="column col-lg-6 col-12">
+        <div id="narrative-text" class="card">
+          <div class="card-header">
+            <div class="card-title h5">Narrative</div>
+          </div>
+          <div class="card-body">
+          </div>
+        </div>
+        <button id="optionA" class="btn btn-primary"></button>
+        <button id="optionB" class="btn btn-secondary"></button>
       </div>
     </div>
-    <button id="optionA" class="btn btn-primary"></button>
-    <button id="optionB" class="btn btn-secondary"></button>
   </div>
   <script src="script.js"></script>
 </body>
