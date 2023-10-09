@@ -8,7 +8,13 @@
 </head>
 <body>
   <h1>Create JSON for Text Adventure Game</h1>
-  <button id="info-button" class="btn btn-primary">ℹ️</button>
+  <div class="btn-group">
+    <button id="info-button" class="btn btn-primary">ℹ️</button>
+    <button type="button" id="add-page" class="btn">Add Page</button>
+    <button type="button" id="generate-json" class="btn">Generate JSON</button>
+    <input type="file" id="import-json" accept=".json" hidden>
+    <button type="button" id="import-button" class="btn">Import JSON</button>
+  </div>
   <div id="info-modal" class="modal modal-lg">
     <a href="#close" class="modal-overlay" aria-label="Close"></a>
     <div class="modal-container dark-mode">
@@ -33,10 +39,6 @@
   <form id="json-form">
     <div id="pages">
     </div>
-    <button type="button" id="add-page" class="btn">Add Page</button><br>
-    <button type="button" id="generate-json" class="btn">Generate JSON</button><br>
-    <input type="file" id="import-json" accept=".json">
-    <button type="button" id="import-button" class="btn">Import JSON</button>
   </form>
   <h2>Generated JSON:</h2>
   <pre id="json-output"></pre>
