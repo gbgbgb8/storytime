@@ -14,6 +14,16 @@ async function loadStory(storyName) {
     const response = await fetch(`stories/${storyName}/story.json`);
     const gameData = await response.json();
 
+    function getRandomImage(pageNumber) {
+        const images = [
+            `stories/${storyName}/page${pageNumber}-a.jpg`,
+            `stories/${storyName}/page${pageNumber}-b.jpg`,
+            `stories/${storyName}/page${pageNumber}-c.jpg`
+        ];
+        const randomIndex = Math.floor(Math.random() * images.length);
+        return images[randomIndex];
+    }
+
     function updatePage(pageNumber) {
         const pageData = gameData.pages[pageNumber];
         document.getElementById('game-image').src = getRandomImage(pageNumber);
@@ -30,6 +40,21 @@ async function loadStory(storyName) {
 document.getElementById('fab-button').addEventListener('click', function() {
     const controls = document.getElementById('fab-controls');
     controls.classList.toggle('hidden');
+});
+
+// Initialize dark mode if not set
+if (!document.body.classList.contains('bg-dark')) {
+    document.body.classList.add('bg-dark');
+}
+
+// Listen for story selection change
+document.getElementById('story-select').addEventListener('change', function() {
+    loadStory(this.value);
+});
+
+// Toggle dark mode
+document.getElementById('mode-toggle').addEventListener('click', function() {
+    document.body.classList.toggle('bg-dark');
 });
 
 populateStories();

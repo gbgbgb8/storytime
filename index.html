@@ -4,29 +4,7 @@
   <meta charset="UTF-8">
   <title>Text Adventure Game</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <style>
-    /* FAB styles */
-    .fab-menu {
-      position: fixed;
-      bottom: 1rem;
-      right: 1rem;
-      z-index: 1000;
-    }
-
-    .fab-button {
-      border-radius: 50%;
-    }
-
-    .fab-controls {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-    }
-
-    .hidden {
-      display: none;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body class="bg-dark text-white">
   <div id="fab-menu" class="fab-menu">
@@ -60,46 +38,6 @@
       <button id="optionB" class="btn btn-dark mx-2"></button>
     </div>
   </footer>
-  <script>
-    // Populate story dropdown dynamically
-    async function populateStories() {
-        const stories = ['default', 'catonabeach', 'example1'];
-        const selectElement = document.getElementById('story-select');
-        stories.forEach(story => {
-          const option = document.createElement('option');
-          option.text = story;
-          option.value = story;
-          selectElement.appendChild(option);
-        });
-        loadStory(stories[0]);
-      }
-
-    // Load a selected story
-    async function loadStory(storyName) {
-        const response = await fetch(`stories/${storyName}/story.json`);
-        const gameData = await response.json();
-
-        function updatePage(pageNumber) {
-          const pageData = gameData.pages[pageNumber];
-          document.getElementById('game-image').src = getRandomImage(pageNumber);
-          document.getElementById('narrative-text').innerHTML = pageData.text;
-          document.getElementById('optionA').innerText = pageData.options[0].text;
-          document.getElementById('optionB').innerText = pageData.options[1].text;
-          document.getElementById('optionA').onclick = () => updatePage(pageData.options[0].nextPage);
-          document.getElementById('optionB').onclick = () => updatePage(pageData.options[1].nextPage);
-        }
-
-        updatePage("1");
-      }
-
-    // Toggle FAB menu visibility
-    document.getElementById('fab-button').addEventListener('click', function() {
-        const controls = document.getElementById('fab-controls');
-        controls.classList.toggle('hidden');
-    });
-
-    // Populate stories and initialize
-    populateStories();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
