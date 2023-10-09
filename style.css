@@ -7,6 +7,7 @@
   
   .fab-button {
     border-radius: 50%;
+    padding: 1rem;  /* Increased padding to enlarge the FAB */
   }
   
   .fab-controls {
@@ -29,10 +30,6 @@
     height: auto;
   }
   
-  .card .card-body {
-    /* Removed max-height and overflow-y properties to make the box dynamically fit the text */
-  }
-  
   #options-container {
     display: flex;
     justify-content: space-evenly;
@@ -46,12 +43,6 @@
     white-space: normal;
     word-wrap: break-word;
     overflow: hidden;
-  }
-  
-  @media (min-width: 768px) {
-    .card {
-      max-height: 40vh;
-    }
   }
   
   body.dark-mode {
