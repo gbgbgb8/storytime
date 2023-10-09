@@ -16,6 +16,7 @@ async function discoverStories() {
 }
 
 async function populateStories() {
+    document.getElementById('spinner').style.display = 'block';
     const stories = await discoverStories();
     const selectElement = document.getElementById("story-select");
     stories.forEach(story => {
@@ -24,13 +25,16 @@ async function populateStories() {
         option.value = story;
         selectElement.appendChild(option);
     });
-    if (stories.length > 0) loadStory(stories[0]);
+    document.getElementById('spinner').style.display = 'none';
+    if (stories.length > 0) {
+        const randomIndex = Math.floor(Math.random() * stories.length);
+        loadStory(stories[randomIndex]);
+    }
 }
 
 async function loadStory(storyName) {
     const response = await fetch(`stories/morestories/${storyName}/story.json`);
     const gameData = await response.json();
-
     function getRandomImage(pageNumber) {
         const images = [
             `stories/morestories/${storyName}/page${pageNumber}-a.jpg`,
@@ -70,11 +74,11 @@ populateStories();
 
 document.getElementById('fab-button').addEventListener('click', function() {
     const controls = document.getElementById('fab-controls');
-    controls.classList.toggle('hidden');
+    controls.classList.toggle('active');
 });
 
 document.querySelectorAll('.fab-controls button, .fab-controls select').forEach(el => {
     el.addEventListener('click', function() {
-        document.getElementById('fab-controls').classList.add('hidden');
+        document.getElementById('fab-controls').classList.remove('active');
     });
 });
