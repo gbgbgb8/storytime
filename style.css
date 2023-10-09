@@ -26,11 +26,11 @@
   .card img {
     object-fit: cover;
     width: 100%;
-    height: auto;  /* Changed to auto for better mobile layout */
+    height: auto;
   }
   
   .card .card-body {
-    overflow-y: auto;
+    /* Removed max-height and overflow-y properties to make the box dynamically fit the text */
   }
   
   #options-container {
@@ -51,9 +51,6 @@
   @media (min-width: 768px) {
     .card {
       max-height: 40vh;
-    }
-    .card .card-body {
-      max-height: 100%;
     }
   }
   
