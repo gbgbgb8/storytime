@@ -8,7 +8,28 @@
 </head>
 <body>
   <h1>Create JSON for Text Adventure Game</h1>
-  <button type="button" id="info-button" class="btn btn-primary">🛈 How to Use</button>
+  <button id="info-button" class="btn btn-primary">ℹ️</button>
+  <div id="info-modal" class="modal modal-lg">
+    <a href="#close" class="modal-overlay" aria-label="Close"></a>
+    <div class="modal-container dark-mode">
+      <div class="modal-header">
+        <a href="#close" class="btn btn-clear float-right" aria-label="Close" id="close-info"></a>
+        <div class="modal-title h5">How to Use MakeJSON</div>
+      </div>
+      <div class="modal-body">
+        <div class="content">
+          <p>To create a new story for the main StoryTime app, follow these steps:</p>
+          <ol>
+            <li>Click the 'Add Page' button to add a new page to your story.</li>
+            <li>Fill out the Narrative Text, Setting, Time, Option A Text, Option B Text, Option A Next Page, and Option B Next Page for each page.</li>
+            <li>Click the 'Generate JSON' button to generate the JSON structure of your story.</li>
+            <li>Click the 'Copy JSON' button to copy this JSON to your clipboard.</li>
+            <li>Paste this JSON into a new file and save it as 'story.json' inside a folder under the 'stories' directory of your StoryTime app.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
   <form id="json-form">
     <div id="pages">
     </div>
@@ -20,52 +41,6 @@
   <h2>Generated JSON:</h2>
   <pre id="json-output"></pre>
   <button type="button" id="copy-json" class="btn">Copy JSON</button>
-
-  <!-- Information Modal -->
-  <div id="info-modal" class="modal modal-lg">
-    <a href="#close" class="modal-overlay" aria-label="Close"></a>
-    <div class="modal-container">
-      <div class="modal-header">
-        <a href="#close" class="btn btn-clear float-right" aria-label="Close"></a>
-        <div class="modal-title h5">How to Use MakeJSON</div>
-      </div>
-      <div class="modal-body">
-        <div class="content">
-          <h5>File and Folder Structure</h5>
-          <p>Make sure your main project has the following structure:</p>
-          <pre>
-- main_folder/
-  - stories/
-    - your_story_folder/
-      - story.json
-      - page1-a.jpg
-      - page1-b.jpg
-      - page2-a.jpg
-      <!-- more pages and images -->
-  - makejson.html
-  - makejson.js
-  - makejson.css
-  - script.js
-  - style.css
-  - index.html
-          </pre>
-          <h5>Creating a New Story</h5>
-          <ol>
-            <li>Open <strong>makejson.html</strong> in a browser.</li>
-            <li>Use the <strong>Add Page</strong> button to create a new page.</li>
-            <li>Fill in the narrative text, setting, time, and options.</li>
-            <li>Click <strong>Generate JSON</strong> to see the JSON output.</li>
-            <li>Use the <strong>Copy JSON</strong> button to copy the JSON data.</li>
-            <li>Create a new folder under <strong>/stories</strong> and name it according to your story.</li>
-            <li>In this folder, create a file named <strong>story.json</strong> and paste the copied JSON data.</li>
-            <li>Add images to this folder, following the naming conventions like <strong>page1-a.jpg</strong>, <strong>page1-b.jpg</strong>, etc.</li>
-            <li>Finally, update the <strong>script.js</strong> file to include your new story in the story dropdown.</li>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <script src="makejson.js"></script>
 </body>
 </html>

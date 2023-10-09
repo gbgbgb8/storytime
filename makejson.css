@@ -5,8 +5,6 @@ body {
   
   .page {
     margin-bottom: 20px;
-    border: 1px solid #444;
-    padding: 10px;
     border-radius: 8px;
   }
   
@@ -14,60 +12,33 @@ body {
     color: #fff;
   }
   
-  .card {
-    background-color: #333;
-  }
-  
-  .card-header {
-    background-color: #444;
-  }
-  
-  .card-body {
-    background-color: #333;
-  }
-  
-  .textarea,
-  .input {
-    width: 100%;
-    background-color: #444;
-    color: #fff;
-    border: 1px solid #555;
-  }
-  
   .btn {
-    background-color: #444;
-    color: #fff;
-    border: 1px solid #555;
+    margin: 10px 0;
   }
   
-  #json-output {
-    background-color: #333;
-    border: 1px solid #444;
-    padding: 10px;
-    color: #fff;
-    overflow: auto;
+  #pages {
+    margin-bottom: 20px;
+  }
+  
+  .narrative-text, .option-text {
+    width: 100%;
+    min-height: 100px;
+    resize: vertical;
   }
   
   #info-modal {
-    display: none;
+    width: 50%;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  #info-modal .modal-body {
     background-color: #333;
     color: #fff;
-    border: 1px solid #444;
-    padding: 20px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000;
-    width: 80%;
-    max-width: 400px;
   }
   
-  #info-modal.active {
-    display: block;
-  }
-  
-  #info-modal p, #info-modal h3 {
+  #info-modal .modal-header {
+    background-color: #444;
     color: #fff;
   }
   
