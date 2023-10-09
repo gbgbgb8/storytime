@@ -1,15 +1,17 @@
 body {
     background-color: #222;
-    color: #fff;
+    color: #ddd;  /* Changed from #fff to #ddd for better contrast */
 }
 
 .page {
     margin-bottom: 20px;
     border-radius: 8px;
+    background-color: #333;  /* Added background color */
+    color: #ddd;  /* Added text color */
 }
 
 h1, h2 {
-    color: #fff;
+    color: #ddd;  /* Changed from #fff to #ddd */
 }
 
 .btn {
@@ -24,6 +26,8 @@ h1, h2 {
     width: 100%;
     min-height: 100px;
     resize: vertical;
+    background-color: #444;  /* Added background color */
+    color: #ddd;  /* Added text color */
 }
 
 #info-modal {
@@ -33,16 +37,16 @@ h1, h2 {
 }
 
 #info-modal.active .modal-container {
-    background-color: #333;
-    color: #fff;
-}
-
-#info-modal .modal-header {
     background-color: #444;
     color: #fff;
 }
 
+#info-modal .modal-header {
+    background-color: #555;
+    color: #fff;
+}
+
 #info-modal .modal-body {
-    background-color: #333;
+    background-color: #444;
     color: #fff;
 }
