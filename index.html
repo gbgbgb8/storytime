@@ -7,19 +7,21 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="dark-mode">
-  <button id="mode-toggle">🌗</button>
-  <button id="goto-maker" onclick="window.location.href='makejson.html'">❓</button>
-  <select id="story-select">
-    <!-- Options will be populated dynamically -->
-  </select>
-  <div id="game-container" class="container grid-lg">
+  <div id="header">
+    <button id="mode-toggle">🌗</button>
+    <button id="goto-maker" onclick="window.location.href='makejson.html'">❓</button>
+    <select id="story-select">
+      <!-- Options will be populated dynamically -->
+    </select>
+  </div>
+  <div id="game-container" class="container">
     <div class="columns">
-      <div class="column col-12">
+      <div class="column col-xs-12 col-md-6">
         <div class="card">
           <img id="game-image" src="" alt="Game Image" class="img-responsive">
         </div>
       </div>
-      <div class="column col-12">
+      <div class="column col-xs-12 col-md-6">
         <div id="narrative-text" class="card">
           <div class="card-header">
             <div class="card-title h5">📖</div>
@@ -29,6 +31,8 @@
         </div>
       </div>
     </div>
+  </div>
+  <div id="footer">
     <div id="options-container">
       <button id="optionA" class="btn"></button>
       <button id="optionB" class="btn"></button>
