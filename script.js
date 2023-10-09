@@ -42,7 +42,8 @@ async function loadStory(storyName) {
 
   function updatePage(pageNumber) {
     const pageData = gameData.pages[pageNumber];
-    document.getElementById('game-image').src = `stories/morestories/${storyName}/page${pageNumber}.jpg`;
+    const randomImageSuffix = String.fromCharCode(97 + Math.floor(Math.random() * 3));
+    document.getElementById('game-image').src = `stories/morestories/${storyName}/page${pageNumber}-${randomImageSuffix}.jpg`;
     document.getElementById('narrative-text').innerHTML = md.render(pageData.text);
     document.getElementById('optionA').innerText = pageData.options[0].text;
     document.getElementById('optionB').innerText = pageData.options[1].text;
