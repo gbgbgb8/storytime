@@ -7,30 +7,34 @@
 
 .fab-button {
     border-radius: 50%;
-    padding: 2rem;
-    width: 5rem;
-    height: 5rem;
+    padding: 1.5rem;
+    width: 4rem;
+    height: 4rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    z-index: 1001;  /* Increased z-index */
+}
+
+@media (max-width: 768px) {
+    .fab-button {
+        padding: 1rem;
+        width: 3rem;
+        height: 3rem;
+        font-size: 1rem;
+    }
 }
 
 .fab-controls {
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    transition: transform 0.3s ease;
-    transform: scale(0);
-    transform-origin: bottom right;
-    opacity: 0;
-    pointer-events: none;
+    z-index: 1002;  /* Increased z-index */
 }
 
 .fab-controls.active {
-    transform: scale(1);
-    opacity: 1;
-    pointer-events: auto;
+    display: flex;  /* Make sure the controls are displayed when active class is added */
 }
 
 .hidden {
