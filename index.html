@@ -7,28 +7,23 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="dark-mode">
-  <button id="mode-toggle">🌗</button>
-  <button id="goto-maker" onclick="window.location.href='makejson.html'">❓</button>
-  <select id="story-select">
-    <!-- Options will be populated dynamically -->
-  </select>
-  <div id="game-container" class="container grid-lg">
-    <div class="columns">
-      <div class="column col-lg-6 col-12 col-xs-12">
-        <div class="card">
-          <img id="game-image" src="" alt="Game Image" class="img-responsive">
-        </div>
-      </div>
-      <div class="column col-lg-6 col-12 col-xs-12">
-        <div id="narrative-text" class="card">
-          <div class="card-header">
-            <div class="card-title h5">📖</div>
-          </div>
-          <div class="card-body">
-          </div>
-        </div>
-      </div>
+  <div id="header" class="navbar">
+    <button id="mode-toggle">🌗</button>
+    <button id="goto-maker" onclick="window.location.href='makejson.html'">❓</button>
+    <select id="story-select"></select>
+  </div>
+  <div id="game-container" class="container">
+    <div class="card">
+      <img id="game-image" src="" alt="Game Image" class="img-responsive">
     </div>
+    <div id="narrative-text" class="card">
+      <div class="card-header">
+        <div class="card-title h5">📖</div>
+      </div>
+      <div class="card-body"></div>
+    </div>
+  </div>
+  <div id="footer">
     <div id="options-container">
       <button id="optionA" class="btn"></button>
       <button id="optionB" class="btn"></button>
