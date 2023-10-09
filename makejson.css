@@ -1,44 +1,43 @@
 body {
     background-color: #222;
     color: #fff;
-  }
-  
-  .page {
+}
+
+.page {
     margin-bottom: 20px;
     border-radius: 8px;
-  }
-  
-  h1, h2 {
+}
+
+h1, h2 {
     color: #fff;
-  }
-  
-  .btn {
+}
+
+.btn {
     margin: 10px 0;
-  }
-  
-  #pages {
+}
+
+#pages {
     margin-bottom: 20px;
-  }
-  
-  .narrative-text, .option-text {
+}
+
+.narrative-text, .option-text {
     width: 100%;
     min-height: 100px;
     resize: vertical;
-  }
-  
-  #info-modal {
+}
+
+#info-modal {
     width: 50%;
     max-width: 600px;
     margin: 0 auto;
-  }
-  
-  #info-modal .modal-body {
+}
+
+#info-modal.active .modal-container {
     background-color: #333;
     color: #fff;
-  }
-  
-  #info-modal .modal-header {
+}
+
+#info-modal .modal-header {
     background-color: #444;
     color: #fff;
-  }
-  
+}
