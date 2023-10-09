@@ -1,20 +1,27 @@
-const md = window.markdownit();
-
 function addPage(i, data = {}) {
     const newPage = document.createElement('div');
     newPage.className = 'page card';
     newPage.id = `page-${i}`;
+    const narrativeTextArea = document.createElement('textarea');
+    narrativeTextArea.name = `text-${i}`;
+    narrativeTextArea.className = 'narrative-text';
+    narrativeTextArea.textContent = data.text || '';
+    const narrativeMDE = new EasyMDE({ element: narrativeTextArea });
     newPage.innerHTML = `
       <div class="card-header">
         <div class="card-title h5">Page ${i}</div>
       </div>
       <div class="card-body">
-        <label>Narrative Text: <textarea name="text-${i}" class="narrative-text">${data.text || ''}</textarea></label><br>
+        <label>Narrative Text:</label>
+      </div>
+    `;
+    newPage.querySelector('.card-body').appendChild(narrativeTextArea);
+    newPage.innerHTML += `
         <label>Setting: <input type="text" name="setting-${i}" value="${data.metadata?.Setting || ''}"></label><br>
         <label>Time: <input type="text" name="time-${i}" value="${data.metadata?.Time || ''}"></label><br>
-        <label>Option A Text: <textarea name="optionA-${i}" class="option-text">${data.options?.[0]?.text || ''}</textarea></label><br>
+        <label>Option A Text: <input type="text" name="optionA-${i}" value="${data.options?.[0]?.text || ''}"></label><br>
         <label>Option A Next Page: <input type="text" name="optionA-next-${i}" value="${data.options?.[0]?.nextPage || ''}"></label><br>
-        <label>Option B Text: <textarea name="optionB-${i}" class="option-text">${data.options?.[1]?.text || ''}</textarea></label><br>
+        <label>Option B Text: <input type="text" name="optionB-${i}" value="${data.options?.[1]?.text || ''}"></label><br>
         <label>Option B Next Page: <input type="text" name="optionB-next-${i}" value="${data.options?.[1]?.nextPage || ''}"></label><br>
       </div>
     `;
@@ -55,7 +62,6 @@ document.addEventListener('DOMContentLoaded', function () {
         ]
       };
     }
-
     document.getElementById('json-output').textContent = JSON.stringify(jsonData, null, 2);
   });
 
