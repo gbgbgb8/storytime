@@ -72,11 +72,13 @@ document.getElementById('story-select').addEventListener('change', function() {
 
 populateStories();
 
+// Toggle FAB menu
 document.getElementById('fab-button').addEventListener('click', function() {
     const controls = document.getElementById('fab-controls');
     controls.classList.toggle('active');
 });
 
+// Close FAB menu when an option is selected
 document.querySelectorAll('.fab-controls button, .fab-controls select').forEach(el => {
     el.addEventListener('click', function() {
         document.getElementById('fab-controls').classList.remove('active');
