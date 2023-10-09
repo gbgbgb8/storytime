@@ -67,3 +67,7 @@ body {
     display: block;
   }
   
+  #info-modal p, #info-modal h3 {
+    color: #fff;
+  }
+  
