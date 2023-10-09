@@ -1,4 +1,3 @@
-// Load JSON Data from a local file
 fetch('story.json')
   .then(response => response.json())
   .then(data => {
@@ -26,3 +25,11 @@ fetch('story.json')
 
     updatePage("1");
   });
+
+document.getElementById('mode-toggle').addEventListener('click', function() {
+  document.body.classList.toggle('dark-mode');
+});
+
+if (!document.body.classList.contains('dark-mode')) {
+  document.body.classList.add('dark-mode');
+}
