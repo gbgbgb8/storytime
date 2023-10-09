@@ -7,13 +7,12 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="dark-mode text-white">
-  <div id="fab-menu" class="fab-menu">
-    <button id="fab-button" class="btn btn-dark fab-button">☰</button>
-    <div id="fab-controls" class="fab-controls d-none btn-group-vertical">
+  <div id="fab-menu" class="position-fixed bottom-0 end-0 z-index-1000">
+    <button id="fab-button" class="btn btn-dark rounded-circle p-4 w-4 h-4 d-flex justify-content-center align-items-center fs-1">☰</button>
+    <div id="fab-controls" class="d-none flex-column align-items-end z-index-1002">
       <button id="mode-toggle" class="btn btn-dark">🌗</button>
       <button id="goto-maker" class="btn btn-dark" onclick="window.location.href='makejson.html'">❓</button>
-      <select id="story-select" class="form-select bg-dark text-white">
-      </select>
+      <select id="story-select" class="form-select bg-dark text-white"></select>
     </div>
   </div>
   <div class="container my-4">
@@ -30,11 +29,10 @@
       <div class="col-12 col-lg-6">
         <div class="card bg-secondary h-100">
           <div class="card-header fs-4">📖</div>
-          <div id="narrative-text" class="card-body">
-          </div>
+          <div id="narrative-text" class="card-body overflow-auto" style="max-height: calc(100vh - 210px);"></div>
           <div id="options-container" class="card-footer d-flex flex-wrap justify-content-evenly align-items-center">
-            <button id="optionA" class="btn btn-dark mx-2"></button>
-            <button id="optionB" class="btn btn-dark mx-2"></button>
+            <button id="optionA" class="btn btn-dark flex-grow-1 mx-2 text-center"></button>
+            <button id="optionB" class="btn btn-dark flex-grow-1 mx-2 text-center"></button>
           </div>
         </div>
       </div>
