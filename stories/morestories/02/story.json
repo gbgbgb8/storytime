@@ -1,21 +1,38 @@
 {
-    "pages": {
-      "1": {
-        "text": "With a gentle stir, you find yourself slowly emerging from a light slumber. As you blink away the grogginess, you realize you're nestled on a soft, warm stretch of sand. The rhythmic sound of waves lapping at the shore fills your ears, and the salty scent of the ocean breeze tickles your nose. You're at the beach, but how did you get here?  Just a few paces from where you lie, there's a peculiar rock. Unlike the other ordinary pebbles and stones scattered about, this one stands out — its surface shimmers in hues you've never seen before, almost as if it's whispering tales of ancient secrets.  Beside you, half-buried under the pristine white sand, there's an old, weathered book. Its cover, though worn by time, suggests it holds stories of great adventures and mysteries.",
-        "metadata": {
-          "Setting": "",
-          "Time": ""
+  "pages": {
+    "1": {
+      "text": "With a gentle stir, you find yourself slowly emerging from a light slumber. As you blink away the grogginess, you realize you're nestled on a soft, warm stretch of sand. The rhythmic sound of waves lapping at the shore fills your ears, and the salty scent of the ocean breeze tickles your nose. You're at the beach, but how did you get here?  Just a few paces from where you lie, there's a peculiar rock. Unlike the other ordinary pebbles and stones scattered about, this one stands out — its surface shimmers in hues you've never seen before, almost as if it's whispering tales of ancient secrets.  Beside you, half-buried under the pristine white sand, there's an old, weathered book. Its cover, though worn by time, suggests it holds stories of great adventures and mysteries.",
+      "metadata": {
+        "Setting": "",
+        "Time": ""
+      },
+      "options": [
+        {
+          "text": "With curiosity bubbling within you, you decide to get up and touch that mesmerizing rock.",
+          "nextPage": "2"
         },
-        "options": [
-          {
-            "text": "With curiosity bubbling within you, you decide to get up and touch that mesmerizing rock.",
-            "nextPage": "2"
-          },
-          {
-            "text": "Drawn by the allure of the forgotten tales, you reach out to grasp the book, ready to uncover its secrets.",
-            "nextPage": "3"
-          }
-        ]
-      }
+        {
+          "text": "Drawn by the allure of the forgotten tales, you reach out to grasp the book, ready to uncover its secrets.",
+          "nextPage": "3"
+        }
+      ]
+    },
+    "2": {
+      "text": "As your fingers make contact with the smooth, cool surface of the rock, a bright flash suddenly bursts forth! You shut your eyes against the intense light. A kaleidoscope of shapes and colors swims before you and a strange energy thrums through your body. When you open your eyes again, you find yourself in a lush, tropical forest, with no sight of the beach or peculiar rock. Giant ferns and vivid flowers in colors you've never seen before surround you. The air feels different here - heavier, warmer, filled with new scents. In the distance, you hear unusual bird calls. You have no idea where - or when - you are. Looking down, you see a worn footpath leading deeper into the mysterious forest. ",
+      "metadata": {
+        "Setting": "",
+        "Time": ""
+      },
+      "options": [
+        {
+          "text": "Follow the path and see where it leads.",
+          "nextPage": "3"
+        },
+        {
+          "text": "Turn back and try to find the beach again.",
+          "nextPage": "1"
+        }
+      ]
     }
   }
+}
