@@ -45,13 +45,17 @@
 }
 
 @media (max-width: 767px) {
-    .column.col-lg-6 {
+    .column {
         max-width: 100%;
         flex-basis: 100%;
     }
 
     .card {
         height: calc(30vh - 1rem);
+    }
+
+    #game-image {
+        display: block;
     }
 }
 
