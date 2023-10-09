@@ -21,17 +21,15 @@
   
   .card {
     margin: 1rem;
-    max-height: 40vh;
   }
   
   .card img {
     object-fit: cover;
     width: 100%;
-    height: 100%;
+    height: auto;  /* Changed to auto for better mobile layout */
   }
   
   .card .card-body {
-    max-height: 100%;
     overflow-y: auto;
   }
   
@@ -51,8 +49,11 @@
   }
   
   @media (min-width: 768px) {
-    #game-container {
-      flex-direction: row;
+    .card {
+      max-height: 40vh;
+    }
+    .card .card-body {
+      max-height: 100%;
     }
   }
   
