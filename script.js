@@ -16,7 +16,7 @@ async function discoverStories() {
 }
 
 async function populateStories() {
-    document.getElementById('spinner').style.display = 'block';
+    document.getElementById('spinner').classList.remove('d-none');
     const stories = await discoverStories();
     const selectElement = document.getElementById("story-select");
     stories.forEach(story => {
@@ -26,15 +26,15 @@ async function populateStories() {
         selectElement.appendChild(option);
     });
     if (stories.length > 0) loadStory(stories[Math.floor(Math.random() * stories.length)]);
-    document.getElementById('spinner').style.display = 'none';
+    document.getElementById('spinner').classList.add('d-none');
 }
 
 async function loadStory(storyName) {
     const response = await fetch(`stories/morestories/${storyName}/story.json`);
     const gameData = await response.json();
 
-    document.getElementById('splash-image').style.display = 'none';
-    document.getElementById('game-image').style.display = 'block';
+    document.getElementById('splash-image').classList.add('d-none');
+    document.getElementById('game-image').classList.remove('d-none');
 
     function getRandomImage(pageNumber) {
         const images = [
@@ -61,7 +61,7 @@ async function loadStory(storyName) {
 
 document.getElementById('mode-toggle').addEventListener('click', function() {
     document.body.classList.toggle('dark-mode');
-    document.getElementById('fab-controls').classList.add('hidden');
+    document.getElementById('fab-controls').classList.add('d-none');
 });
 
 if (!document.body.classList.contains('dark-mode')) {
@@ -70,19 +70,19 @@ if (!document.body.classList.contains('dark-mode')) {
 
 document.getElementById('story-select').addEventListener('change', function() {
     loadStory(this.value);
-    document.getElementById('fab-controls').classList.add('hidden');
+    document.getElementById('fab-controls').classList.add('d-none');
 });
 
 populateStories();
 
 document.getElementById('fab-button').addEventListener('click', function() {
     const controls = document.getElementById('fab-controls');
-    controls.classList.toggle('hidden');
+    controls.classList.toggle('d-none');
 });
 
 document.querySelectorAll('.fab-controls button, .fab-controls select').forEach(el => {
     el.addEventListener('click', function() {
-        document.getElementById('fab-controls').classList.add('hidden');
+        document.getElementById('fab-controls').classList.add('d-none');
     });
 });
 

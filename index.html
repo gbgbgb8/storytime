@@ -9,7 +9,7 @@
 <body class="dark-mode text-white">
   <div id="fab-menu" class="fab-menu">
     <button id="fab-button" class="btn btn-dark fab-button">☰</button>
-    <div id="fab-controls" class="fab-controls hidden">
+    <div id="fab-controls" class="fab-controls d-none btn-group-vertical">
       <button id="mode-toggle" class="btn btn-dark">🌗</button>
       <button id="goto-maker" class="btn btn-dark" onclick="window.location.href='makejson.html'">❓</button>
       <select id="story-select" class="form-select bg-dark text-white">
@@ -17,14 +17,14 @@
     </div>
   </div>
   <div class="container my-4">
-    <div id="spinner" class="spinner-border text-light" role="status" style="display:none;">
+    <div id="spinner" class="spinner-border text-light d-none" role="status">
       <span class="visually-hidden">Loading...</span>
     </div>
     <div class="row gx-5">
       <div class="col-12 col-lg-6">
         <div class="card bg-secondary h-100">
-          <img id="splash-image" src="" alt="Splash Image" class="card-img-top" style="display:block;">
-          <img id="game-image" src="" alt="Game Image" class="card-img-top" style="display:none;">
+          <img id="splash-image" src="" alt="Splash Image" class="card-img-top d-block">
+          <img id="game-image" src="" alt="Game Image" class="card-img-top d-none">
         </div>
       </div>
       <div class="col-12 col-lg-6">
@@ -32,7 +32,7 @@
           <div class="card-header fs-4">📖</div>
           <div id="narrative-text" class="card-body">
           </div>
-          <div id="options-container" class="card-footer">
+          <div id="options-container" class="card-footer d-flex flex-wrap justify-content-evenly align-items-center">
             <button id="optionA" class="btn btn-dark mx-2"></button>
             <button id="optionB" class="btn btn-dark mx-2"></button>
           </div>

@@ -14,7 +14,7 @@
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
-    z-index: 1001;  /* Increased z-index */
+    z-index: 1001;
 }
 
 @media (max-width: 768px) {
@@ -30,14 +30,10 @@
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-    z-index: 1002;  /* Increased z-index */
+    z-index: 1002;
 }
 
-.fab-controls.active {
-    display: flex;  /* Make sure the controls are displayed when active class is added */
-}
-
-.hidden {
+.d-none {
     display: none;
 }
 
