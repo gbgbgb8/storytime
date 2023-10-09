@@ -1,91 +1,80 @@
-async function populateStories() {
-    try {
-        const stories = ['default', 'catonabeach', 'example1'];
-        const selectElement = document.getElementById('story-select');
-        stories.forEach(story => {
-            addStoryOption(selectElement, story);
-        });
-        loadStory(stories[0]);
-    } catch (error) {
-        displayError(error);
-    }
+async function isPlaceholderStory(folder) {
+    const response = await fetch(`stories/morestories/${folder}/story.json`);
+    if (!response.ok) return true;
+    const storyData = await response.json();
+    return storyData.placeholder === true;
 }
 
-function addStoryOption(selectElement, story) {
-    const option = document.createElement('option');
-    option.text = story;
-    option.value = story;
-    selectElement.appendChild(option);
+async function discoverStories() {
+    const storyFolders = Array.from({length: 99}, (_, i) => String(i + 1).padStart(2, '0'));
+    const storyList = [];
+    for (const folder of storyFolders) {
+        const isPlaceholder = await isPlaceholderStory(folder);
+        if (!isPlaceholder) storyList.push(folder);
+    }
+    return storyList;
+}
+
+async function populateStories() {
+    const stories = await discoverStories();
+    const selectElement = document.getElementById("story-select");
+    stories.forEach(story => {
+        const option = document.createElement('option');
+        option.text = story;
+        option.value = story;
+        selectElement.appendChild(option);
+    });
+    if (stories.length > 0) loadStory(stories[0]);
 }
 
 async function loadStory(storyName) {
-    try {
-        const response = await fetch(`stories/${storyName}/story.json`);
-        if (!response.ok) {
-            throw new Error('Failed to load story.');
-        }
-        const gameData = await response.json();
-        updatePage("1", gameData);
-    } catch (error) {
-        displayError(error);
+    const response = await fetch(`stories/morestories/${storyName}/story.json`);
+    const gameData = await response.json();
+
+    function getRandomImage(pageNumber) {
+        const images = [
+            `stories/morestories/${storyName}/page${pageNumber}-a.jpg`,
+            `stories/morestories/${storyName}/page${pageNumber}-b.jpg`,
+            `stories/morestories/${storyName}/page${pageNumber}-c.jpg`
+        ];
+        const randomIndex = Math.floor(Math.random() * images.length);
+        return images[randomIndex];
     }
-}
 
-function updatePage(pageNumber, gameData) {
-    const pageData = gameData.pages[pageNumber];
-    document.getElementById('game-image').src = getRandomImage(pageNumber, gameData);
-    document.getElementById('narrative-text').innerHTML = pageData.text;
-    const optionA = pageData.options[0];
-    const optionB = pageData.options[1];
-    setOptionButton('optionA', optionA, gameData);
-    setOptionButton('optionB', optionB, gameData);
-}
+    function updatePage(pageNumber) {
+        const pageData = gameData.pages[pageNumber];
+        document.getElementById('game-image').src = getRandomImage(pageNumber);
+        document.getElementById('narrative-text').innerHTML = pageData.text;
+        document.getElementById('optionA').innerText = pageData.options[0].text;
+        document.getElementById('optionB').innerText = pageData.options[1].text;
+        document.getElementById('optionA').onclick = () => updatePage(pageData.options[0].nextPage);
+        document.getElementById('optionB').onclick = () => updatePage(pageData.options[1].nextPage);
+    }
 
-function setOptionButton(buttonId, option, gameData) {
-    const button = document.getElementById(buttonId);
-    button.innerText = option.text;
-    button.onclick = () => updatePage(option.nextPage, gameData);
-}
-
-function getRandomImage(pageNumber, gameData) {
-    const images = [
-        `stories/${gameData.name}/page${pageNumber}-a.jpg`,
-        `stories/${gameData.name}/page${pageNumber}-b.jpg`,
-        `stories/${gameData.name}/page${pageNumber}-c.jpg`
-    ];
-    const randomIndex = Math.floor(Math.random() * images.length);
-    return images[randomIndex];
-}
-
-function displayError(error) {
-    // Implement Bootstrap alert for displaying error
+    updatePage("1");
 }
 
 document.getElementById('mode-toggle').addEventListener('click', function() {
     document.body.classList.toggle('dark-mode');
 });
 
+if (!document.body.classList.contains('dark-mode')) {
+    document.body.classList.add('dark-mode');
+}
+
 document.getElementById('story-select').addEventListener('change', function() {
     loadStory(this.value);
 });
 
+populateStories();
+
 document.getElementById('fab-button').addEventListener('click', function() {
-    toggleFabControls();
+    const controls = document.getElementById('fab-controls');
+    controls.classList.toggle('hidden');
 });
 
 document.querySelectorAll('.fab-controls button, .fab-controls select').forEach(el => {
     el.addEventListener('click', function() {
-        toggleFabControls(true);
+        document.getElementById('fab-controls').classList.add('hidden');
     });
 });
-
-function toggleFabControls(hide = false) {
-    const controls = document.getElementById('fab-controls');
-    if (hide) {
-        controls.classList.add('hidden');
-    } else {
-        controls.classList.toggle('hidden');
-    }
-}
-
-populateStories();
