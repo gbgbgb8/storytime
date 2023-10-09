@@ -3,44 +3,42 @@ body {
     color: #fff;
   }
   
-  .page {
-    margin-bottom: 20px;
-  }
-  
-  .page .card {
-    border: 1px solid #444;
-    padding: 10px;
-    border-radius: 8px;
-  }
-  
   h1, h2 {
     color: #fff;
   }
   
-  .expandable {
-    width: 100%;
-    min-height: 50px;
-    resize: both;
-    overflow: auto;
-  }
-  
-  .btn-group {
+  .page {
     margin-bottom: 20px;
   }
   
   .card {
-    margin-bottom: 20px;
+    border: 1px solid #444;
+    border-radius: 8px;
+    background-color: #333;
+    color: #fff;
+    margin-bottom: 1rem;
   }
   
-  .card-header, .card-body, .card-footer {
+  .card-header {
+    background-color: #444;
     padding: 10px;
+    border-radius: 8px 8px 0 0;
   }
   
-  .card-footer {
-    text-align: right;
+  .card-body {
+    padding: 10px;
+    border-radius: 0 0 8px 8px;
   }
   
-  .d-none {
-    display: none;
+  .expanding-textarea {
+    width: 100%;
+    min-height: 50px;
+    resize: vertical;
+  }
+  
+  .btn {
+    background-color: #555;
+    color: #fff;
+    margin-top: 1rem;
   }
   

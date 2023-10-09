@@ -7,20 +7,33 @@ function addPage(i, data = {}) {
         <h2>Page ${i}</h2>
       </div>
       <div class="card-body">
-        <label>Narrative Text: <textarea name="text-${i}" class="expandable">${data.text || ''}</textarea></label><br>
-        <label>Setting: <input type="text" name="setting-${i}" value="${data.metadata?.Setting || ''}"></label><br>
-        <label>Time: <input type="text" name="time-${i}" value="${data.metadata?.Time || ''}"></label><br>
-        <label>Option A Text: <textarea name="optionA-${i}" class="expandable">${data.options?.[0]?.text || ''}</textarea></label><br>
-        <label>Option A Next Page: <input type="text" name="optionA-next-${i}" value="${data.options?.[0]?.nextPage || ''}"></label><br>
-        <label>Option B Text: <textarea name="optionB-${i}" class="expandable">${data.options?.[1]?.text || ''}</textarea></label><br>
-        <label>Option B Next Page: <input type="text" name="optionB-next-${i}" value="${data.options?.[1]?.nextPage || ''}"></label><br>
+        <label>Narrative Text:</label><br>
+        <textarea name="text-${i}" class="expanding-textarea">${data.text || ''}</textarea><br>
+        <label>Setting:</label><br>
+        <input type="text" name="setting-${i}" value="${data.metadata?.Setting || ''}"><br>
+        <label>Time:</label><br>
+        <input type="text" name="time-${i}" value="${data.metadata?.Time || ''}"><br>
+        <label>Option A Text:</label><br>
+        <textarea name="optionA-${i}" class="expanding-textarea">${data.options?.[0]?.text || ''}</textarea><br>
+        <label>Option A Next Page:</label><br>
+        <input type="text" name="optionA-next-${i}" value="${data.options?.[0]?.nextPage || ''}"><br>
+        <label>Option B Text:</label><br>
+        <textarea name="optionB-${i}" class="expanding-textarea">${data.options?.[1]?.text || ''}</textarea><br>
+        <label>Option B Next Page:</label><br>
+        <input type="text" name="optionB-next-${i}" value="${data.options?.[1]?.nextPage || ''}">
       </div>
     `;
     document.getElementById('pages').appendChild(newPage);
-    autoGenerateJSON();
   }
   
-  function autoGenerateJSON() {
+  addPage(1);
+  
+  document.getElementById('add-page').addEventListener('click', function() {
+    const nextPage = document.querySelectorAll('.page').length + 1;
+    addPage(nextPage);
+  });
+  
+  document.getElementById('generate-json').addEventListener('click', function() {
     const jsonData = { pages: {} };
     for (const pageDiv of document.querySelectorAll('.page')) {
       const i = pageDiv.id.split('-')[1];
@@ -44,16 +57,11 @@ function addPage(i, data = {}) {
       };
     }
     document.getElementById('json-output').textContent = JSON.stringify(jsonData, null, 2);
-  }
-  
-  addPage(1);
-  
-  document.getElementById('add-page').addEventListener('click', function() {
-    const nextPage = document.querySelectorAll('.page').length + 1;
-    addPage(nextPage);
   });
   
-  document.getElementById('json-form').addEventListener('input', autoGenerateJSON);
+  document.getElementById('import-button').addEventListener('click', function() {
+    document.getElementById('import-json').click();
+  });
   
   document.getElementById('import-json').addEventListener('change', function() {
     const fileInput = document.getElementById('import-json');
@@ -69,10 +77,6 @@ function addPage(i, data = {}) {
       };
       reader.readAsText(file);
     }
-  });
-  
-  document.getElementById('import-button').addEventListener('click', function() {
-    document.getElementById('import-json').click();
   });
   
   document.getElementById('copy-json').addEventListener('click', function() {
