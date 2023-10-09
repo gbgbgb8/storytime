@@ -38,11 +38,11 @@ async function loadStory(storyName) {
 }
 
 document.getElementById('mode-toggle').addEventListener('click', function() {
-    document.body.classList.toggle('bg-dark');
+    document.body.classList.toggle('dark-mode');
 });
 
-if (!document.body.classList.contains('bg-dark')) {
-    document.body.classList.add('bg-dark');
+if (!document.body.classList.contains('dark-mode')) {
+    document.body.classList.add('dark-mode');
 }
 
 document.getElementById('story-select').addEventListener('change', function() {
