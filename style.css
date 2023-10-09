@@ -69,4 +69,10 @@
     background-color: #444;
     color: #fff;
   }
-  
+  #options-container .btn {
+    margin: 0.5rem;
+    white-space: normal;
+    width: calc(50% - 1rem);
+    text-align: center;
+  }
+    
