@@ -16,6 +16,7 @@ async function discoverStories() {
 }
 
 async function populateStories() {
+    document.getElementById('spinner').style.display = 'block';
     const stories = await discoverStories();
     const selectElement = document.getElementById("story-select");
     stories.forEach(story => {
@@ -25,11 +26,15 @@ async function populateStories() {
         selectElement.appendChild(option);
     });
     if (stories.length > 0) loadStory(stories[Math.floor(Math.random() * stories.length)]);
+    document.getElementById('spinner').style.display = 'none';
 }
 
 async function loadStory(storyName) {
     const response = await fetch(`stories/morestories/${storyName}/story.json`);
     const gameData = await response.json();
+
+    document.getElementById('splash-image').style.display = 'none';
+    document.getElementById('game-image').style.display = 'block';
 
     function getRandomImage(pageNumber) {
         const images = [
@@ -56,34 +61,31 @@ async function loadStory(storyName) {
 
 document.getElementById('mode-toggle').addEventListener('click', function() {
     document.body.classList.toggle('dark-mode');
-    document.getElementById('fab-controls').classList.remove('active');
+    document.getElementById('fab-controls').classList.add('hidden');
 });
 
 if (!document.body.classList.contains('dark-mode')) {
     document.body.classList.add('dark-mode');
 }
 
-document.getElementById('goto-maker').addEventListener('click', function() {
-    document.getElementById('fab-controls').classList.remove('active');
-});
-
 document.getElementById('story-select').addEventListener('change', function() {
     loadStory(this.value);
-    document.getElementById('fab-controls').classList.remove('active');
+    document.getElementById('fab-controls').classList.add('hidden');
 });
+
+populateStories();
 
 document.getElementById('fab-button').addEventListener('click', function() {
     const controls = document.getElementById('fab-controls');
-    controls.classList.toggle('active');
+    controls.classList.toggle('hidden');
 });
 
 document.querySelectorAll('.fab-controls button, .fab-controls select').forEach(el => {
     el.addEventListener('click', function() {
-        document.getElementById('fab-controls').classList.remove('active');
+        document.getElementById('fab-controls').classList.add('hidden');
     });
 });
 
-document.getElementById('spinner').style.display = 'block';
-populateStories().then(() => {
-    document.getElementById('spinner').style.display = 'none';
-});
+const splashImages = ['splash1.jpg', 'splash2.jpg', 'splash3.jpg', 'splash4.jpg'];
+const randomSplashIndex = Math.floor(Math.random() * splashImages.length);
+document.getElementById('splash-image').src = splashImages[randomSplashIndex];
