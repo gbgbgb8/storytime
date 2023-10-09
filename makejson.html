@@ -8,17 +8,20 @@
 </head>
 <body>
   <h1>Create JSON for Text Adventure Game</h1>
+  <div id="controls" class="btn-group btn-group-block">
+    <button type="button" id="add-page" class="btn">Add Page</button>
+    <button type="button" id="generate-json" class="btn">Generate JSON</button>
+    <input type="file" id="import-json" accept=".json" class="d-none">
+    <button type="button" id="import-button" class="btn">Import JSON</button>
+    <button type="button" id="copy-json" class="btn">Copy JSON</button>
+  </div>
   <form id="json-form">
     <div id="pages">
+      <!-- Placeholder for pages -->
     </div>
-    <button type="button" id="add-page" class="btn">Add Page</button><br>
-    <button type="button" id="generate-json" class="btn">Generate JSON</button><br>
-    <input type="file" id="import-json" accept=".json">
-    <button type="button" id="import-button" class="btn">Import JSON</button>
   </form>
   <h2>Generated JSON:</h2>
   <pre id="json-output"></pre>
-  <button type="button" id="copy-json" class="btn">Copy JSON</button>
   <script src="makejson.js"></script>
 </body>
 </html>
