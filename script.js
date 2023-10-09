@@ -1,3 +1,5 @@
+const md = window.markdownit();
+
 async function isPlaceholderStory(folder) {
     const response = await fetch(`stories/morestories/${folder}/story.json`);
     if (!response.ok) return true;
@@ -32,7 +34,6 @@ async function populateStories() {
 async function loadStory(storyName) {
     const response = await fetch(`stories/morestories/${storyName}/story.json`);
     const gameData = await response.json();
-
     document.getElementById('splash-image').classList.add('d-none');
     document.getElementById('game-image').classList.remove('d-none');
 
@@ -49,7 +50,7 @@ async function loadStory(storyName) {
     function updatePage(pageNumber) {
         const pageData = gameData.pages[pageNumber];
         document.getElementById('game-image').src = getRandomImage(pageNumber);
-        document.getElementById('narrative-text').innerHTML = pageData.text;
+        document.getElementById('narrative-text').innerHTML = md.render(pageData.text);
         document.getElementById('optionA').innerText = pageData.options[0].text;
         document.getElementById('optionB').innerText = pageData.options[1].text;
         document.getElementById('optionA').onclick = () => updatePage(pageData.options[0].nextPage);
