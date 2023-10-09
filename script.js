@@ -35,9 +35,15 @@ async function loadStory(storyName) {
     const response = await fetch(`stories/morestories/${storyName}/story.json`);
     const gameData = await response.json();
 
+    // Set splash image when story is loaded
+    document.getElementById('splash-image').src = `stories/morestories/${storyName}/splash.jpg`;
+
     function updatePage(pageNumber) {
         const pageData = gameData.pages[pageNumber];
+
+        // Update game image based on current page number
         document.getElementById('game-image').src = `stories/morestories/${storyName}/page${pageNumber}.jpg`;
+
         document.getElementById('narrative-text').innerHTML = md.render(pageData.text);
         document.getElementById('optionA').innerText = pageData.options[0].text;
         document.getElementById('optionB').innerText = pageData.options[1].text;
