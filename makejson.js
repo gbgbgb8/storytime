@@ -7,19 +7,20 @@ function addPage(i, data = {}) {
         <h2>Page ${i}</h2>
       </div>
       <div class="card-body">
-        <label>Narrative Text: <textarea name="text-${i}">${data.text || ''}</textarea></label><br>
+        <label>Narrative Text: <textarea name="text-${i}" class="expandable">${data.text || ''}</textarea></label><br>
         <label>Setting: <input type="text" name="setting-${i}" value="${data.metadata?.Setting || ''}"></label><br>
         <label>Time: <input type="text" name="time-${i}" value="${data.metadata?.Time || ''}"></label><br>
-        <label>Option A Text: <textarea name="optionA-${i}">${data.options?.[0]?.text || ''}</textarea></label><br>
+        <label>Option A Text: <textarea name="optionA-${i}" class="expandable">${data.options?.[0]?.text || ''}</textarea></label><br>
         <label>Option A Next Page: <input type="text" name="optionA-next-${i}" value="${data.options?.[0]?.nextPage || ''}"></label><br>
-        <label>Option B Text: <textarea name="optionB-${i}">${data.options?.[1]?.text || ''}</textarea></label><br>
+        <label>Option B Text: <textarea name="optionB-${i}" class="expandable">${data.options?.[1]?.text || ''}</textarea></label><br>
         <label>Option B Next Page: <input type="text" name="optionB-next-${i}" value="${data.options?.[1]?.nextPage || ''}"></label><br>
       </div>
     `;
     document.getElementById('pages').appendChild(newPage);
+    autoGenerateJSON();
   }
   
-  function generateJSON() {
+  function autoGenerateJSON() {
     const jsonData = { pages: {} };
     for (const pageDiv of document.querySelectorAll('.page')) {
       const i = pageDiv.id.split('-')[1];
@@ -45,14 +46,16 @@ function addPage(i, data = {}) {
     document.getElementById('json-output').textContent = JSON.stringify(jsonData, null, 2);
   }
   
+  addPage(1);
+  
   document.getElementById('add-page').addEventListener('click', function() {
     const nextPage = document.querySelectorAll('.page').length + 1;
     addPage(nextPage);
   });
   
-  document.getElementById('generate-json').addEventListener('click', generateJSON);
+  document.getElementById('json-form').addEventListener('input', autoGenerateJSON);
   
-  document.getElementById('import-button').addEventListener('click', function() {
+  document.getElementById('import-json').addEventListener('change', function() {
     const fileInput = document.getElementById('import-json');
     const file = fileInput.files[0];
     if (file) {
@@ -63,10 +66,13 @@ function addPage(i, data = {}) {
         for (const [i, data] of Object.entries(jsonData.pages)) {
           addPage(i, data);
         }
-        generateJSON();
       };
       reader.readAsText(file);
     }
+  });
+  
+  document.getElementById('import-button').addEventListener('click', function() {
+    document.getElementById('import-json').click();
   });
   
   document.getElementById('copy-json').addEventListener('click', function() {
@@ -77,7 +83,4 @@ function addPage(i, data = {}) {
       alert('Could not copy JSON: ', err);
     });
   });
-  
-  // Automatically add first page
-  addPage(1);
   

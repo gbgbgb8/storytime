@@ -3,40 +3,44 @@ body {
     color: #fff;
   }
   
+  .page {
+    margin-bottom: 20px;
+  }
+  
+  .page .card {
+    border: 1px solid #444;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
   h1, h2 {
     color: #fff;
   }
   
-  .page {
+  .expandable {
+    width: 100%;
+    min-height: 50px;
+    resize: both;
+    overflow: auto;
+  }
+  
+  .btn-group {
     margin-bottom: 20px;
-    border-radius: 8px;
   }
   
   .card {
-    background-color: #333;
-    color: #fff;
-    border: 1px solid #444;
+    margin-bottom: 20px;
   }
   
-  .card-header {
-    background-color: #444;
+  .card-header, .card-body, .card-footer {
+    padding: 10px;
   }
   
-  .card-body {
-    padding: 20px;
+  .card-footer {
+    text-align: right;
   }
   
-  textarea {
-    width: 100%;
-    height: 50px;
-    resize: vertical;
-  }
-  
-  button.btn {
-    margin: 5px;
-  }
-  
-  input[type="file"] {
-    margin-top: 20px;
+  .d-none {
+    display: none;
   }
   
