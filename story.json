@@ -1,22 +1,22 @@
 {
     "pages": {
-      "1": {
-        "text": "",
-        "metadata": {
-          "Setting": "",
-          "Time": ""
-        },
-        "options": [
-          {
-            "text": "",
-            "nextPage": "2"
+        "1": {
+            "text": "You wake up. You see that you are at the beach. You see a weird rock. There is a book near you.",
+            "metadata": {
+              "Setting": "",
+              "Time": ""
+            },
+            "options": [
+              {
+                "text": "Get up and touch the weird rock.",
+                "nextPage": "2"
+              },
+              {
+                "text": "Read the book.",
+                "nextPage": "3"
+              }
+            ]
           },
-          {
-            "text": "",
-            "nextPage": "3"
-          }
-        ]
-      },
       "2": {
         "text": "",
         "metadata": {
