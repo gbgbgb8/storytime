@@ -8,11 +8,11 @@
 </head>
 <body class="dark-mode text-white">
   <div id="fab-menu" class="fab-menu">
-    <button id="fab-button" class="btn btn-dark fab-button">☰</button>
+    <button id="fab-button" class="btn btn-dark fab-button" aria-label="Open Menu">☰</button>
     <div id="fab-controls" class="fab-controls hidden">
-      <button id="mode-toggle" class="btn btn-dark">🌗</button>
-      <button id="goto-maker" class="btn btn-dark" onclick="window.location.href='makejson.html'">❓</button>
-      <select id="story-select" class="form-select bg-dark text-white">
+      <button id="mode-toggle" class="btn btn-dark" aria-label="Toggle Dark Mode">🌗</button>
+      <button id="goto-maker" class="btn btn-dark" onclick="window.location.href='makejson.html'" aria-label="Go to Maker">❓</button>
+      <select id="story-select" class="form-select bg-dark text-white" aria-label="Select Story">
       </select>
     </div>
   </div>
@@ -20,17 +20,17 @@
     <div class="row gx-5">
       <div class="col-12 col-lg-6">
         <div class="card bg-secondary h-100">
-          <img id="game-image" src="" alt="Game Image" class="card-img-top">
+          <img id="game-image" src="" alt="Game Image" class="card-img-top img-fluid">
         </div>
       </div>
-      <div class="col-12 col-lg-6">
-        <div class="card bg-secondary h-100">
+      <div class="col-12 col-lg-6 d-flex flex-column">
+        <div class="card bg-secondary flex-grow-1">
           <div class="card-header fs-4">📖</div>
-          <div id="narrative-text" class="card-body">
+          <div id="narrative-text" class="card-body overflow-auto">
           </div>
           <div id="options-container" class="card-footer">
-            <button id="optionA" class="btn btn-dark mx-2"></button>
-            <button id="optionB" class="btn btn-dark mx-2"></button>
+            <button id="optionA" class="btn btn-dark mx-2" aria-label="Option A"></button>
+            <button id="optionB" class="btn btn-dark mx-2" aria-label="Option B"></button>
           </div>
         </div>
       </div>
