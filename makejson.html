@@ -9,53 +9,52 @@
 
   <form id="json-form">
     <div id="pages">
-      <!-- Page 1 -->
-      <div class="page" id="page-1">
-        <h2>Page 1</h2>
-        <label>Narrative Text: <input type="text" name="text-1"></label><br>
-        <label>Setting: <input type="text" name="setting-1"></label><br>
-        <label>Time: <input type="text" name="time-1"></label><br>
-        <label>Option A Text: <input type="text" name="optionA-1"></label><br>
-        <label>Option A Next Page: <input type="text" name="optionA-next-1"></label><br>
-        <label>Option B Text: <input type="text" name="optionB-1"></label><br>
-        <label>Option B Next Page: <input type="text" name="optionB-next-1"></label><br>
-      </div>
-      <!-- More pages can be added here -->
+      <!-- Placeholder for pages -->
     </div>
     <button type="button" id="add-page">Add Page</button><br>
-    <button type="button" id="generate-json">Generate JSON</button>
+    <button type="button" id="generate-json">Generate JSON</button><br>
+    <input type="file" id="import-json" accept=".json">
+    <button type="button" id="import-button">Import JSON</button>
   </form>
 
   <h2>Generated JSON:</h2>
   <pre id="json-output"></pre>
 
   <script>
-    let pageCount = 1;
-
-    document.getElementById('add-page').addEventListener('click', function() {
-      pageCount++;
+    // Add and populate page fields
+    function addPage(i, data = {}) {
       const newPage = document.createElement('div');
       newPage.className = 'page';
-      newPage.id = `page-${pageCount}`;
+      newPage.id = `page-${i}`;
       newPage.innerHTML = `
-        <h2>Page ${pageCount}</h2>
-        <label>Narrative Text: <input type="text" name="text-${pageCount}"></label><br>
-        <label>Setting: <input type="text" name="setting-${pageCount}"></label><br>
-        <label>Time: <input type="text" name="time-${pageCount}"></label><br>
-        <label>Option A Text: <input type="text" name="optionA-${pageCount}"></label><br>
-        <label>Option A Next Page: <input type="text" name="optionA-next-${pageCount}"></label><br>
-        <label>Option B Text: <input type="text" name="optionB-${pageCount}"></label><br>
-        <label>Option B Next Page: <input type="text" name="optionB-next-${pageCount}"></label><br>
+        <h2>Page ${i}</h2>
+        <label>Narrative Text: <input type="text" name="text-${i}" value="${data.text || ''}"></label><br>
+        <label>Setting: <input type="text" name="setting-${i}" value="${data.metadata?.Setting || ''}"></label><br>
+        <label>Time: <input type="text" name="time-${i}" value="${data.metadata?.Time || ''}"></label><br>
+        <label>Option A Text: <input type="text" name="optionA-${i}" value="${data.options?.[0]?.text || ''}"></label><br>
+        <label>Option A Next Page: <input type="text" name="optionA-next-${i}" value="${data.options?.[0]?.nextPage || ''}"></label><br>
+        <label>Option B Text: <input type="text" name="optionB-${i}" value="${data.options?.[1]?.text || ''}"></label><br>
+        <label>Option B Next Page: <input type="text" name="optionB-next-${i}" value="${data.options?.[1]?.nextPage || ''}"></label><br>
       `;
       document.getElementById('pages').appendChild(newPage);
+    }
+
+    // Add first page by default
+    addPage(1);
+
+    // Add more pages
+    document.getElementById('add-page').addEventListener('click', function() {
+      const nextPage = document.querySelectorAll('.page').length + 1;
+      addPage(nextPage);
     });
 
+    // Generate JSON
     document.getElementById('generate-json').addEventListener('click', function() {
       const jsonData = {
         pages: {}
       };
-
-      for (let i = 1; i <= pageCount; i++) {
+      for (const pageDiv of document.querySelectorAll('.page')) {
+        const i = pageDiv.id.split('-')[1];
         const form = document.forms['json-form'];
         jsonData.pages[i] = {
           text: form[`text-${i}`].value,
@@ -75,8 +74,24 @@
           ]
         };
       }
-
       document.getElementById('json-output').textContent = JSON.stringify(jsonData, null, 2);
+    });
+
+    // Import JSON
+    document.getElementById('import-button').addEventListener('click', function() {
+      const fileInput = document.getElementById('import-json');
+      const file = fileInput.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const jsonData = JSON.parse(e.target.result);
+          document.getElementById('pages').innerHTML = '';
+          for (const [i, data] of Object.entries(jsonData.pages)) {
+            addPage(i, data);
+          }
+        };
+        reader.readAsText(file);
+      }
     });
   </script>
 </body>
