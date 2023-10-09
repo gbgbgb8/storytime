@@ -45,6 +45,7 @@ h1, h2 {
     resize: vertical;
     background-color: #444;
     color: #ddd;
+    border: 2px solid #555;  /* New Markdown indicator */
 }
 
 #info-modal {
