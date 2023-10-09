@@ -41,3 +41,8 @@ h1, h2 {
     background-color: #444;
     color: #fff;
 }
+
+#info-modal .modal-body {
+    background-color: #333;
+    color: #fff;
+}
