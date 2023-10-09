@@ -13,7 +13,7 @@
         },
         {
           "text": "Drawn by the allure of the forgotten tales, you reach out to grasp the book, ready to uncover its secrets.",
-          "nextPage": "3"
+          "nextPage": "4"
         }
       ]
     },
@@ -31,6 +31,23 @@
         {
           "text": "Turn back and try to find the beach again.",
           "nextPage": "1"
+        }
+      ]
+    },
+    "3": {
+      "text": "Curiosity propels you forward as you follow the winding path deeper into the lush green forest. The unusual birdsong and foreign floral scents hang heavy in the humid air. You run your fingers along the giant leaves and vine-covered trees unlike any you've ever seen. Rounding a bend, you spot a structure up ahead. As you get closer, you see it's a mossy stone temple, ancient and overgrown but still standing tall. Vines crawl up the weathered columns and symbols are carved across the entranceway. What secrets lie within? Just then, you notice a second path diverging to the right, leading away into a denser part of the jungle. ",
+      "metadata": {
+        "Setting": "",
+        "Time": ""
+      },
+      "options": [
+        {
+          "text": "Enter the ancient temple to explore.",
+          "nextPage": "5"
+        },
+        {
+          "text": "Continue along the forest path.",
+          "nextPage": "6"
         }
       ]
     }
