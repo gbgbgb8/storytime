@@ -4,23 +4,16 @@ function addPage(i, data = {}) {
     newPage.id = `page-${i}`;
     newPage.innerHTML = `
       <div class="card-header">
-        <h2>Page ${i}</h2>
+        <div class="card-title h5">Page ${i}</div>
       </div>
       <div class="card-body">
-        <label>Narrative Text:</label><br>
-        <textarea name="text-${i}" class="expanding-textarea">${data.text || ''}</textarea><br>
-        <label>Setting:</label><br>
-        <input type="text" name="setting-${i}" value="${data.metadata?.Setting || ''}"><br>
-        <label>Time:</label><br>
-        <input type="text" name="time-${i}" value="${data.metadata?.Time || ''}"><br>
-        <label>Option A Text:</label><br>
-        <textarea name="optionA-${i}" class="expanding-textarea">${data.options?.[0]?.text || ''}</textarea><br>
-        <label>Option A Next Page:</label><br>
-        <input type="text" name="optionA-next-${i}" value="${data.options?.[0]?.nextPage || ''}"><br>
-        <label>Option B Text:</label><br>
-        <textarea name="optionB-${i}" class="expanding-textarea">${data.options?.[1]?.text || ''}</textarea><br>
-        <label>Option B Next Page:</label><br>
-        <input type="text" name="optionB-next-${i}" value="${data.options?.[1]?.nextPage || ''}">
+        <label>Narrative Text: <textarea name="text-${i}" class="textarea">${data.text || ''}</textarea></label><br>
+        <label>Setting: <input type="text" name="setting-${i}" class="input" value="${data.metadata?.Setting || ''}"></label><br>
+        <label>Time: <input type="text" name="time-${i}" class="input" value="${data.metadata?.Time || ''}"></label><br>
+        <label>Option A Text: <textarea name="optionA-${i}" class="textarea">${data.options?.[0]?.text || ''}</textarea></label><br>
+        <label>Option A Next Page: <input type="text" name="optionA-next-${i}" class="input" value="${data.options?.[0]?.nextPage || ''}"></label><br>
+        <label>Option B Text: <textarea name="optionB-${i}" class="textarea">${data.options?.[1]?.text || ''}</textarea></label><br>
+        <label>Option B Next Page: <input type="text" name="optionB-next-${i}" class="input" value="${data.options?.[1]?.nextPage || ''}"></label><br>
       </div>
     `;
     document.getElementById('pages').appendChild(newPage);
@@ -60,10 +53,6 @@ function addPage(i, data = {}) {
   });
   
   document.getElementById('import-button').addEventListener('click', function() {
-    document.getElementById('import-json').click();
-  });
-  
-  document.getElementById('import-json').addEventListener('change', function() {
     const fileInput = document.getElementById('import-json');
     const file = fileInput.files[0];
     if (file) {
@@ -86,5 +75,10 @@ function addPage(i, data = {}) {
     }).catch(function(err) {
       alert('Could not copy JSON: ', err);
     });
+  });
+  
+  document.getElementById('info-button').addEventListener('click', function() {
+    const infoModal = document.getElementById('info-modal');
+    infoModal.classList.add('active');
   });
   
