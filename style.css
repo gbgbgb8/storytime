@@ -7,26 +7,24 @@
   
   .fab-button {
     border-radius: 50%;
-    padding: 1.5rem;  /* Increased padding */
-    width: 4rem;  /* Increased width */
-    height: 4rem;  /* Increased height */
+    padding: 1.5rem;
+    width: 4rem;
+    height: 4rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.5rem;  /* Increased font size */
+    font-size: 1.5rem;
   }
   
-  /* Media query to adjust FAB size for small screens */
   @media (max-width: 768px) {
     .fab-button {
-      padding: 2rem;  /* Even larger padding */
-      width: 5rem;  /* Even larger width */
-      height: 5rem;  /* Even larger height */
-      font-size: 2rem;  /* Even larger font size */
+      padding: 2rem;
+      width: 5rem;
+      height: 5rem;
+      font-size: 2rem;
     }
   }
   
-  /* Rest of the CSS remains the same */
   .fab-controls {
     display: flex;
     flex-direction: column;
