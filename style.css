@@ -1,58 +1,40 @@
-#header {
-    background-color: #343a40;
-  }
-  
-  #game-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 1rem 0;
-    flex-grow: 1;
-  }
-  
-  .card {
-    margin: 1rem;
-    max-height: 40vh;
-  }
-  
-  .card img {
-    object-fit: cover;
-    height: 100%;
-    width: 100%;
-  }
-  
-  .card .card-body {
-    max-height: 100%;
-    overflow-y: auto;
-  }
-  
-  #footer {
-    background-color: #343a40;
-    padding: 1rem;
-  }
-  
-  #options-container .btn {
-    margin: 0.5rem;
-    white-space: normal;
-    text-align: center;
-    width: calc(50% - 1rem);
-  }
-  
-  @media (min-width: 768px) {
-    #game-container {
-      flex-direction: row;
-    }
-  }
-  
-  body.bg-dark {
+body.bg-dark {
     background-color: #222 !important;
   }
   
-  .card.bg-secondary {
-    background-color: #343a40 !important;
+  .navbar {
+    margin-bottom: 1rem;
   }
   
-  .btn.btn-dark {
-    background-color: #444 !important;
+  .card {
+    margin: 1rem 0;
+  }
+  
+  .card-img-top {
+    object-fit: cover;
+    height: 40vh;
+  }
+  
+  .card-body {
+    max-height: 40vh;
+    overflow-y: auto;
+  }
+  
+  footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  #options-container .btn {
+    white-space: normal;
+    width: calc(50% - 1rem);
+    text-align: center;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    flex-wrap: wrap;
   }
   
