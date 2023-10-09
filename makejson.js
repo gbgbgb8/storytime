@@ -1,3 +1,5 @@
+const md = window.markdownit();
+
 function addPage(i, data = {}) {
     const newPage = document.createElement('div');
     newPage.className = 'page card';
@@ -53,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
         ]
       };
     }
+
     document.getElementById('json-output').textContent = JSON.stringify(jsonData, null, 2);
   });
 
