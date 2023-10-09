@@ -56,14 +56,20 @@ async function loadStory(storyName) {
 
 document.getElementById('mode-toggle').addEventListener('click', function() {
     document.body.classList.toggle('dark-mode');
+    document.getElementById('fab-controls').classList.remove('active');
 });
 
 if (!document.body.classList.contains('dark-mode')) {
     document.body.classList.add('dark-mode');
 }
 
+document.getElementById('goto-maker').addEventListener('click', function() {
+    document.getElementById('fab-controls').classList.remove('active');
+});
+
 document.getElementById('story-select').addEventListener('change', function() {
     loadStory(this.value);
+    document.getElementById('fab-controls').classList.remove('active');
 });
 
 document.getElementById('fab-button').addEventListener('click', function() {
