@@ -92,7 +92,6 @@ document.addEventListener('DOMContentLoaded', function () {
             const reader = new FileReader();
             reader.onload = function (e) {
                 const jsonData = JSON.parse(e.target.result);
-                document.getElementById('pages').
                 document.getElementById('pages').innerHTML = '';
                 for (const [i, data] of Object.entries(jsonData.pages)) {
                     addPage(i, data);
