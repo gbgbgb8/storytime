@@ -1,22 +1,32 @@
-.page {
+body {
+    background-color: #f8f9fa;
+  }
+  
+  .container {
+    margin-top: 20px;
+  }
+  
+  .page {
     margin-bottom: 20px;
-}
-
-#pages {
-    margin-bottom: 20px;
-}
-
-#info-modal .modal-content {
-    background-color: #444;
-    color: #ddd;
-}
-
-#info-modal .modal-header {
-    background-color: #555;
-    color: #ddd;
-}
-
-#info-modal .modal-body {
-    background-color: #444;
-    color: #ddd;
-}
+  }
+  
+  #json-output {
+    white-space: pre;
+    background-color: #343a40;
+    color: #f8f9fa;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  #flowchart {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 5px;
+  }
+  
+  #flowchart p {
+    margin: 0;
+    padding: 0;
+  }
+  
