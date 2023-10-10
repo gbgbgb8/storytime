@@ -7,14 +7,16 @@
   <link rel="stylesheet" href="makejson.css">
 </head>
 <body>
-  <div class="container mt-4">
-    <h1>Story JSON Creator</h1>
+  <div id="button-bar" class="button-bar">
     <button id="add-page" class="btn btn-primary">Add Page</button>
     <button id="generate-json" class="btn btn-success">Generate JSON</button>
     <button id="import-button" class="btn btn-warning">Import JSON</button>
     <button id="copy-json" class="btn btn-info">Copy JSON to Clipboard</button>
     <button id="info-button" class="btn btn-secondary">Info</button>
     <button id="flowchart-button" class="btn btn-secondary">Flowchart Visualization</button>
+  </div>
+  <div class="container mt-4">
+    <h1>Story JSON Creator</h1>
     <input type="file" id="import-json" style="display: none;">
     <form id="json-form">
       <div id="pages">
