@@ -112,10 +112,7 @@ function addPage(i, data = {}) {
     });
   
     document.getElementById('flowchart-button').addEventListener('click', function () {
-      const form = document.forms['json-form'];
-      const flowchartDiv = document.getElementById('flowchart');
-      flowchartDiv.innerHTML = '';
-      for (const pageDiv of document.querySelectorAll('.page')) {
-        const i = pageDiv.id.split('-')[1];
-        const optionA = form[`optionA-next-${i}`].
-  
+      // Flowchart code here
+    });
+  }
+  )  
