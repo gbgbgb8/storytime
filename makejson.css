@@ -39,6 +39,17 @@ h1, h2 {
     margin-bottom: 20px;
 }
 
+textarea {
+    width: 100%;
+    min-height: 100px;
+    resize: vertical;
+    background-color: #444;
+    color: #ddd;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
 #info-modal {
     width: 50%;
     max-width: 600px;
