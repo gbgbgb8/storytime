@@ -28,17 +28,14 @@ function addPage(i, data = {}) {
   
   document.addEventListener('DOMContentLoaded', function () {
     addPage(1);
-  
     document.getElementById('add-page').addEventListener('click', function () {
       const nextPage = document.querySelectorAll('.page').length + 1;
       addPage(nextPage);
     });
-  
     document.getElementById('generate-json').addEventListener('click', function () {
       const jsonData = {
         pages: {}
       };
-  
       for (const pageDiv of document.querySelectorAll('.page')) {
         const i = pageDiv.id.split('-')[1];
         const form = document.forms['json-form'];
@@ -62,7 +59,6 @@ function addPage(i, data = {}) {
       }
       document.getElementById('json-output').textContent = JSON.stringify(jsonData, null, 2);
     });
-  
     document.getElementById('download-json').addEventListener('click', function () {
       const jsonText = document.getElementById('json-output').textContent;
       const blob = new Blob([jsonText], { type: 'application/json' });
@@ -76,11 +72,9 @@ function addPage(i, data = {}) {
       window.URL.revokeObjectURL(url);
       document.body.removeChild(a);
     });
-  
     document.getElementById('import-button').addEventListener('click', function () {
       document.getElementById('import-json').click();
     });
-  
     document.getElementById('import-json').addEventListener('change', function () {
       const fileInput = document.getElementById('import-json');
       const file = fileInput.files[0];
@@ -96,7 +90,6 @@ function addPage(i, data = {}) {
         reader.readAsText(file);
       }
     });
-  
     document.getElementById('copy-json').addEventListener('click', function () {
       const jsonText = document.getElementById('json-output').textContent;
       navigator.clipboard.writeText(jsonText).then(function () {
@@ -105,14 +98,35 @@ function addPage(i, data = {}) {
         alert('Could not copy JSON: ', err);
       });
     });
-  
     document.getElementById('info-button').addEventListener('click', function () {
       var myModal = new bootstrap.Modal(document.getElementById('info-modal'));
       myModal.show();
     });
-  
     document.getElementById('flowchart-button').addEventListener('click', function () {
-      // Flowchart code here
+      const flowchartDiv = document.getElementById('flowchart');
+      flowchartDiv.innerHTML = '';
+      const form = document.forms['json-form'];
+      const connections = [];
+      for (const pageDiv of document.querySelectorAll('.page')) {
+        const i = pageDiv.id.split('-')[1];
+        const optionA = form[`optionA-next-${i}`].value;
+        const optionB = form[`optionB-next-${i}`].value;
+        if (optionA) connections.push({ from: i, to: optionA });
+        if (optionB) connections.push({ from: i, to: optionB });
+        const flowchartElement = document.createElement('div');
+        flowchartElement.className = 'flowchart-element';
+        flowchartElement.id = `flowchart-element-${i}`;
+        flowchartElement.innerHTML = `
+          <p class="btn btn-primary">${i}</p>
+        `;
+        flowchartDiv.appendChild(flowchartElement);
+      }
+      for (const connection of connections) {
+        const fromElement = document.getElementById(`flowchart-element-${connection.from}`);
+        const toElement = document.getElementById(`flowchart-element-${connection.to}`);
+        if (fromElement && toElement) {
+        }
+      }
     });
-  }
-  )  
+  });
+  
