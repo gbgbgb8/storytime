@@ -1,14 +1,5 @@
-body {
-    background-color: #222;
-    color: #ddd;
-}
-
 .page {
     margin-bottom: 20px;
-}
-
-h1, h2 {
-    color: #ddd;
 }
 
 #pages {
