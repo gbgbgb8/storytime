@@ -2,11 +2,7 @@ function addPage(i, data = {}) {
     const newPage = document.createElement('div');
     newPage.className = 'page card';
     newPage.id = `page-${i}`;
-    const narrativeTextArea = document.createElement('textarea');
-    narrativeTextArea.name = `text-${i}`;
-    narrativeTextArea.className = 'narrative-text';
-    narrativeTextArea.textContent = data.text || '';
-    const narrativeMDE = new EasyMDE({ element: narrativeTextArea });
+    
     newPage.innerHTML = `
       <div class="card-header">
         <div class="card-title h5">Page ${i}</div>
@@ -15,7 +11,17 @@ function addPage(i, data = {}) {
         <label>Narrative Text:</label>
       </div>
     `;
+    
+    const narrativeTextArea = document.createElement('textarea');
+    narrativeTextArea.name = `text-${i}`;
+    narrativeTextArea.className = 'narrative-text';
+    narrativeTextArea.textContent = data.text || '';
+    
     newPage.querySelector('.card-body').appendChild(narrativeTextArea);
+    document.getElementById('pages').appendChild(newPage);
+    
+    const narrativeMDE = new EasyMDE({ element: narrativeTextArea });
+    
     newPage.innerHTML += `
         <label>Setting: <input type="text" name="setting-${i}" value="${data.metadata?.Setting || ''}"></label><br>
         <label>Time: <input type="text" name="time-${i}" value="${data.metadata?.Time || ''}"></label><br>
@@ -25,7 +31,6 @@ function addPage(i, data = {}) {
         <label>Option B Next Page: <input type="text" name="optionB-next-${i}" value="${data.options?.[1]?.nextPage || ''}"></label><br>
       </div>
     `;
-    document.getElementById('pages').appendChild(newPage);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
