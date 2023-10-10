@@ -63,6 +63,20 @@ function addPage(i, data = {}) {
       document.getElementById('json-output').textContent = JSON.stringify(jsonData, null, 2);
     });
   
+    document.getElementById('download-json').addEventListener('click', function () {
+      const jsonText = document.getElementById('json-output').textContent;
+      const blob = new Blob([jsonText], { type: 'application/json' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = url;
+      a.download = 'story.json';
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    });
+  
     document.getElementById('import-button').addEventListener('click', function () {
       document.getElementById('import-json').click();
     });
@@ -101,31 +115,7 @@ function addPage(i, data = {}) {
       const form = document.forms['json-form'];
       const flowchartDiv = document.getElementById('flowchart');
       flowchartDiv.innerHTML = '';
-  
       for (const pageDiv of document.querySelectorAll('.page')) {
         const i = pageDiv.id.split('-')[1];
-        const optionA = form[`optionA-next-${i}`].value;
-        const optionB = form[`optionB-next-${i}`].value;
+        const optionA = form[`optionA-next-${i}`].
   
-        const flowchartElement = document.createElement('div');
-        flowchartElement.className = 'flowchart-element';
-        flowchartElement.innerHTML = `
-          <p class="btn btn-primary">${i}</p>
-          <div class="flowchart-arrows">
-            <p class="btn">
-              <span class="glyphicon glyphicon-arrow-down"></span>
-            </p>
-            <p class="btn">
-              <span class="glyphicon glyphicon-arrow-down"></span>
-            </p>
-          </div>
-          <div class="flowchart-options">
-            <p class="btn btn-success">${optionA || 'None'}</p>
-            <p class="btn btn-danger">${optionB || 'None'}</p>
-          </div>
-        `;
-        flowchartDiv.appendChild(flowchartElement);
-      }
-    });
-  }
-  )
