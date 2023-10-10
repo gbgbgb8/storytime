@@ -41,7 +41,7 @@ h1, h2 {
 
 textarea {
     width: 100%;
-    min-height: 100px;
+    min-height: 200px;  /* Increased the min-height */
     resize: vertical;
     background-color: #444;
     color: #ddd;
