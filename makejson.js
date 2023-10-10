@@ -127,5 +127,5 @@ function addPage(i, data = {}) {
         flowchartDiv.appendChild(flowchartElement);
       }
     });
-  });
-  
+  }
+  )
