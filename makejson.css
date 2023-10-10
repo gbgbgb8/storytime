@@ -11,16 +11,6 @@ body {
     padding: 15px;
 }
 
-.card-header {
-    background-color: #444;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.card-body {
-    padding: 15px;
-}
-
 h1, h2 {
     color: #ddd;
 }
@@ -31,42 +21,28 @@ h1, h2 {
     margin-bottom: 20px;
 }
 
-.btn {
-    margin: 10px 0;
+.form-control {
+    background-color: #444;
+    color: #ddd;
+    border: none;
+    border-radius: 5px;
 }
 
 #pages {
     margin-bottom: 20px;
 }
 
-textarea {
-    width: 100%;
-    min-height: 200px;  /* Increased the min-height */
-    resize: vertical;
+#info-modal .modal-content {
     background-color: #444;
     color: #ddd;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-}
-
-#info-modal {
-    width: 50%;
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-#info-modal.active .modal-container {
-    background-color: #444;
-    color: #fff;
 }
 
 #info-modal .modal-header {
     background-color: #555;
-    color: #fff;
+    color: #ddd;
 }
 
 #info-modal .modal-body {
     background-color: #444;
-    color: #fff;
+    color: #ddd;
 }
