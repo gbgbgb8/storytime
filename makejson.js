@@ -95,5 +95,4 @@ document.addEventListener('DOMContentLoaded', function () {
   document.getElementById('info-button').addEventListener('click', function () {
     var myModal = new bootstrap.Modal(document.getElementById('info-modal'));
     myModal.show();
-  });
-}
+  });})
