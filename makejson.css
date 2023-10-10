@@ -1,32 +1,53 @@
-body {
-    background-color: #f8f9fa;
-  }
-  
-  .container {
-    margin-top: 20px;
-  }
-  
-  .page {
+.flowchart-element {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 20px;
   }
   
-  #json-output {
-    white-space: pre;
-    background-color: #343a40;
-    color: #f8f9fa;
-    padding: 10px;
-    border-radius: 5px;
+  .flowchart-arrows {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
   }
   
-  #flowchart {
-    margin-top: 20px;
-    padding: 10px;
-    border: 1px solid #ced4da;
-    border-radius: 5px;
+  .flowchart-options {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
   }
   
-  #flowchart p {
-    margin: 0;
-    padding: 0;
+  .glyphicon-arrow-down {
+    font-size: 24px;
+  }
+  
+  .btn-primary {
+    background-color: blue;
+    color: white;
+  }
+  
+  .btn-success {
+    background-color: green;
+    color: white;
+  }
+  
+  .btn-danger {
+    background-color: red;
+    color: white;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
   }
   

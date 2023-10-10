@@ -26,37 +26,19 @@ function addPage(i, data = {}) {
     document.getElementById('pages').appendChild(newPage);
   }
   
-  function updateFlowchart() {
-    const flowchartDiv = document.getElementById('flowchart');
-    flowchartDiv.innerHTML = '';
-    for (const pageDiv of document.querySelectorAll('.page')) {
-      const i = pageDiv.id.split('-')[1];
-      const form = document.forms['json-form'];
-      const optionA = form[`optionA-next-${i}`].value;
-      const optionB = form[`optionB-next-${i}`].value;
-      if (optionA || optionB) {
-        const flowDiv = document.createElement('div');
-        flowDiv.innerHTML = `
-          <p>Page ${i} -> Option A: Page ${optionA}</p>
-          <p>Page ${i} -> Option B: Page ${optionB}</p>
-        `;
-        flowchartDiv.appendChild(flowDiv);
-      }
-    }
-  }
-  
   document.addEventListener('DOMContentLoaded', function () {
     addPage(1);
+  
     document.getElementById('add-page').addEventListener('click', function () {
       const nextPage = document.querySelectorAll('.page').length + 1;
       addPage(nextPage);
-      updateFlowchart();
     });
   
     document.getElementById('generate-json').addEventListener('click', function () {
       const jsonData = {
         pages: {}
       };
+  
       for (const pageDiv of document.querySelectorAll('.page')) {
         const i = pageDiv.id.split('-')[1];
         const form = document.forms['json-form'];
@@ -79,7 +61,6 @@ function addPage(i, data = {}) {
         };
       }
       document.getElementById('json-output').textContent = JSON.stringify(jsonData, null, 2);
-      updateFlowchart();
     });
   
     document.getElementById('import-button').addEventListener('click', function () {
@@ -97,7 +78,6 @@ function addPage(i, data = {}) {
           for (const [i, data] of Object.entries(jsonData.pages)) {
             addPage(i, data);
           }
-          updateFlowchart();
         };
         reader.readAsText(file);
       }
@@ -115,6 +95,37 @@ function addPage(i, data = {}) {
     document.getElementById('info-button').addEventListener('click', function () {
       var myModal = new bootstrap.Modal(document.getElementById('info-modal'));
       myModal.show();
+    });
+  
+    document.getElementById('flowchart-button').addEventListener('click', function () {
+      const form = document.forms['json-form'];
+      const flowchartDiv = document.getElementById('flowchart');
+      flowchartDiv.innerHTML = '';
+  
+      for (const pageDiv of document.querySelectorAll('.page')) {
+        const i = pageDiv.id.split('-')[1];
+        const optionA = form[`optionA-next-${i}`].value;
+        const optionB = form[`optionB-next-${i}`].value;
+  
+        const flowchartElement = document.createElement('div');
+        flowchartElement.className = 'flowchart-element';
+        flowchartElement.innerHTML = `
+          <p class="btn btn-primary">${i}</p>
+          <div class="flowchart-arrows">
+            <p class="btn">
+              <span class="glyphicon glyphicon-arrow-down"></span>
+            </p>
+            <p class="btn">
+              <span class="glyphicon glyphicon-arrow-down"></span>
+            </p>
+          </div>
+          <div class="flowchart-options">
+            <p class="btn btn-success">${optionA || 'None'}</p>
+            <p class="btn btn-danger">${optionB || 'None'}</p>
+          </div>
+        `;
+        flowchartDiv.appendChild(flowchartElement);
+      }
     });
   });
   
