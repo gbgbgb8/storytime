@@ -5,27 +5,10 @@ body {
 
 .page {
     margin-bottom: 20px;
-    border-radius: 8px;
-    background-color: #333;
-    color: #ddd;
-    padding: 15px;
 }
 
 h1, h2 {
     color: #ddd;
-}
-
-.btn-group {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.form-control {
-    background-color: #444;
-    color: #ddd;
-    border: none;
-    border-radius: 5px;
 }
 
 #pages {

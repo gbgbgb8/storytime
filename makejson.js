@@ -8,19 +8,19 @@ function addPage(i, data = {}) {
       </div>
       <div class="card-body">
         <label for="text-${i}" class="form-label">Narrative Text:</label>
-        <textarea id="text-${i}" name="text-${i}" class="form-control" rows="5">${data.text || ''}</textarea>
+        <textarea id="text-${i}" name="text-${i}" class="form-control bg-secondary text-light" rows="5">${data.text || ''}</textarea>
         <label for="setting-${i}" class="form-label mt-2">Setting:</label>
-        <input type="text" id="setting-${i}" name="setting-${i}" class="form-control" value="${data.metadata?.Setting || ''}">
+        <input type="text" id="setting-${i}" name="setting-${i}" class="form-control bg-secondary text-light" value="${data.metadata?.Setting || ''}">
         <label for="time-${i}" class="form-label mt-2">Time:</label>
-        <input type="text" id="time-${i}" name="time-${i}" class="form-control" value="${data.metadata?.Time || ''}">
+        <input type="text" id="time-${i}" name="time-${i}" class="form-control bg-secondary text-light" value="${data.metadata?.Time || ''}">
         <label for="optionA-${i}" class="form-label mt-2">Option A Text:</label>
-        <textarea id="optionA-${i}" name="optionA-${i}" class="form-control" rows="3">${data.options?.[0]?.text || ''}</textarea>
+        <textarea id="optionA-${i}" name="optionA-${i}" class="form-control bg-secondary text-light" rows="3">${data.options?.[0]?.text || ''}</textarea>
         <label for="optionA-next-${i}" class="form-label mt-2">Option A Next Page:</label>
-        <input type="text" id="optionA-next-${i}" name="optionA-next-${i}" class="form-control" value="${data.options?.[0]?.nextPage || ''}">
+        <input type="text" id="optionA-next-${i}" name="optionA-next-${i}" class="form-control bg-secondary text-light" value="${data.options?.[0]?.nextPage || ''}">
         <label for="optionB-${i}" class="form-label mt-2">Option B Text:</label>
-        <textarea id="optionB-${i}" name="optionB-${i}" class="form-control" rows="3">${data.options?.[1]?.text || ''}</textarea>
+        <textarea id="optionB-${i}" name="optionB-${i}" class="form-control bg-secondary text-light" rows="3">${data.options?.[1]?.text || ''}</textarea>
         <label for="optionB-next-${i}" class="form-label mt-2">Option B Next Page:</label>
-        <input type="text" id="optionB-next-${i}" name="optionB-next-${i}" class="form-control" value="${data.options?.[1]?.nextPage || ''}">
+        <input type="text" id="optionB-next-${i}" name="optionB-next-${i}" class="form-control bg-secondary text-light" value="${data.options?.[1]?.nextPage || ''}">
       </div>
     `;
     document.getElementById('pages').appendChild(newPage);
@@ -96,9 +96,4 @@ document.addEventListener('DOMContentLoaded', function () {
     var myModal = new bootstrap.Modal(document.getElementById('info-modal'));
     myModal.show();
   });
-
-  document.getElementById('close-info').addEventListener('click', function () {
-    var myModal = new bootstrap.Modal(document.getElementById('info-modal'));
-    myModal.hide();
-  });
-});
+}
