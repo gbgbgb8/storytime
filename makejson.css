@@ -39,14 +39,6 @@ h1, h2 {
     margin-bottom: 20px;
 }
 
-.narrative-text, .option-text {
-    width: 100%;
-    min-height: 100px;
-    resize: vertical;
-    background-color: #444;
-    color: #ddd;
-}
-
 #info-modal {
     width: 50%;
     max-width: 600px;

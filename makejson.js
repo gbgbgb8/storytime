@@ -8,16 +8,7 @@ function addPage(i, data = {}) {
       </div>
       <div class="card-body">
         <label>Narrative Text:</label>
-      </div>
-    `;
-    const narrativeTextArea = document.createElement('textarea');
-    narrativeTextArea.name = `text-${i}`;
-    narrativeTextArea.className = 'narrative-text';
-    narrativeTextArea.textContent = data.text || '';
-    newPage.querySelector('.card-body').appendChild(narrativeTextArea);
-    document.getElementById('pages').appendChild(newPage);
-    const narrativeMDE = new EasyMDE({ element: narrativeTextArea });
-    newPage.innerHTML += `
+        <input type="text" name="text-${i}" value="${data.text || ''}">
         <label>Setting: <input type="text" name="setting-${i}" value="${data.metadata?.Setting || ''}"></label><br>
         <label>Time: <input type="text" name="time-${i}" value="${data.metadata?.Time || ''}"></label><br>
         <label>Option A Text: <input type="text" name="optionA-${i}" value="${data.options?.[0]?.text || ''}"></label><br>
@@ -26,10 +17,12 @@ function addPage(i, data = {}) {
         <label>Option B Next Page: <input type="text" name="optionB-next-${i}" value="${data.options?.[1]?.nextPage || ''}"></label><br>
       </div>
     `;
+    document.getElementById('pages').appendChild(newPage);
 }
 
 document.addEventListener('DOMContentLoaded', function () {
   addPage(1);
+
   document.getElementById('add-page').addEventListener('click', function () {
     const nextPage = document.querySelectorAll('.page').length + 1;
     addPage(nextPage);
@@ -39,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const jsonData = {
       pages: {}
     };
+
     for (const pageDiv of document.querySelectorAll('.page')) {
       const i = pageDiv.id.split('-')[1];
       const form = document.forms['json-form'];
