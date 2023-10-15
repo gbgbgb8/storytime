@@ -61,7 +61,7 @@ async function loadStory(storyName) {
     const pageData = gameData.pages[pageNumber];
     const randomImageSuffix = String.fromCharCode(97 + Math.floor(Math.random() * 3));
     const imagePath = `stories/morestories/${storyName}/page${pageNumber}-${randomImageSuffix}.jpg`;
-    const placeholderPath = `stories/morestories/00/placeholder-${randomImageSuffix}.jpg`;
+    const placeholderPath = `stories/morestories/${storyName}/placeholder-${randomImageSuffix}.jpg`;
     
     const imageExists = await loadImageExists(imagePath);
     document.getElementById('game-image').src = imageExists ? imagePath : placeholderPath;
