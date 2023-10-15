@@ -44,14 +44,28 @@ async function populateStories() {
   document.getElementById('spinner').classList.add('d-none');
 }
 
+async function loadImageExists(src) {
+  return new Promise(resolve => {
+    const img = new Image();
+    img.onload = () => resolve(true);
+    img.onerror = () => resolve(false);
+    img.src = src;
+  });
+}
+
 async function loadStory(storyName) {
   const response = await fetch(`stories/morestories/${storyName}/story.json`);
   const gameData = await response.json();
 
-  function updatePage(pageNumber) {
+  async function updatePage(pageNumber) {
     const pageData = gameData.pages[pageNumber];
     const randomImageSuffix = String.fromCharCode(97 + Math.floor(Math.random() * 3));
-    document.getElementById('game-image').src = `stories/morestories/${storyName}/page${pageNumber}-${randomImageSuffix}.jpg`;
+    const imagePath = `stories/morestories/${storyName}/page${pageNumber}-${randomImageSuffix}.jpg`;
+    const placeholderPath = `stories/morestories/00/placeholder-${randomImageSuffix}.jpg`;
+    
+    const imageExists = await loadImageExists(imagePath);
+    document.getElementById('game-image').src = imageExists ? imagePath : placeholderPath;
+    
     document.getElementById('narrative-text').innerHTML = md.render(pageData.text);
     document.getElementById('optionA').innerText = pageData.options[0].text;
     document.getElementById('optionB').innerText = pageData.options[1].text;
