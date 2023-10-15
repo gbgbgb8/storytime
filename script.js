@@ -28,6 +28,7 @@ async function discoverStories() {
 }
 
 async function populateStories() {
+  loadStory("01");
   document.getElementById('spinner').classList.remove('d-none');
   const stories = await discoverStories();
   const selectElement = document.getElementById("story-select");
@@ -37,7 +38,9 @@ async function populateStories() {
     option.value = story;
     selectElement.appendChild(option);
   });
-  if (stories.length > 0) loadStory(stories[Math.floor(Math.random() * stories.length)]);
+  if (stories.length > 0 && !stories.includes("01")) {
+    loadStory(stories[Math.floor(Math.random() * stories.length)]);
+  }
   document.getElementById('spinner').classList.add('d-none');
 }
 
