@@ -6,10 +6,15 @@ function setRandomSplashImage() {
 }
 
 async function isPlaceholderStory(folder) {
-  const response = await fetch(`stories/morestories/${folder}/story.json`);
-  if (!response.ok) return true;
-  const storyData = await response.json();
-  return storyData.placeholder === true;
+  try {
+    const response = await fetch(`stories/morestories/${folder}/story.json`);
+    if (!response.ok) return true;
+    const storyData = await response.json();
+    return storyData.placeholder === true;
+  } catch (e) {
+    console.error(`Error in isPlaceholderStory for folder ${folder}:`, e);
+    return true;
+  }
 }
 
 async function discoverStories() {
@@ -53,7 +58,6 @@ async function loadStory(storyName) {
 
   document.getElementById('splash-image').classList.add('d-none');
   document.getElementById('game-image').classList.remove('d-none');
-
   updatePage("1");
 }
 
