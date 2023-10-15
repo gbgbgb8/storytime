@@ -1,0 +1,55 @@
+{
+    "pages": {
+      "1": {
+        "text": "You wake up. You see that you are at the beach. You see a weird rock. There is a book near you.",
+        "metadata": {
+          "Setting": "",
+          "Time": ""
+        },
+        "options": [
+          {
+            "text": "Get up and touch the weird rock.",
+            "nextPage": "2"
+          },
+          {
+            "text": "Read the book.",
+            "nextPage": "3"
+          }
+        ]
+      },
+      "2": {
+        "text": "The rock feels weird. You see that it has something on it. You see a fish tail stuck in a boulder.",
+        "metadata": {
+          "Setting": "",
+          "Time": ""
+        },
+        "options": [
+          {
+            "text": "See what fish is stuck.",
+            "nextPage": "4"
+          },
+          {
+            "text": "Examine the rock.",
+            "nextPage": "5"
+          }
+        ]
+      },
+      "3": {
+        "text": "The book is blank, but on the back there is a mermaid tail. You see a fish tail stuck in a boulder.",
+        "metadata": {
+          "Setting": "",
+          "Time": ""
+        },
+        "options": [
+          {
+            "text": "See what fish is stuck.",
+            "nextPage": "4"
+          },
+          {
+            "text": "Write in the book.",
+            "nextPage": "6"
+          }
+        ]
+      }
+    }
+  }
