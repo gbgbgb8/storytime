@@ -26,16 +26,9 @@ function addPage(i, data = {}) {
     document.getElementById('pages').appendChild(newPage);
 }
 
-function addArrow(element, option) {
-    const arrow = document.createElement('p');
-    arrow.innerHTML = `⬇️ ${option}`;
-    element.appendChild(arrow);
-}
-
 document.addEventListener('DOMContentLoaded', function () {
     addPage(1);
     const jsonForm = document.forms['json-form'];
-    const flowchartDiv = document.getElementById('flowchart');
 
     document.getElementById('add-page').addEventListener('click', function () {
         const nextPage = document.querySelectorAll('.page').length + 1;
@@ -43,7 +36,12 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     document.getElementById('generate-json').addEventListener('click', function () {
-        const jsonData = { pages: {} };
+        const jsonData = {
+            title: document.getElementById('story-title').value,
+            author: document.getElementById('story-author').value,
+            comments: document.getElementById('story-comments').value,
+            pages: {}
+        };
         document.querySelectorAll('.page').forEach(pageDiv => {
             const i = pageDiv.id.split('-')[1];
             jsonData.pages[i] = {
@@ -92,6 +90,9 @@ document.addEventListener('DOMContentLoaded', function () {
             const reader = new FileReader();
             reader.onload = function (e) {
                 const jsonData = JSON.parse(e.target.result);
+                document.getElementById('story-title').value = jsonData.title;
+                document.getElementById('story-author').value = jsonData.author;
+                document.getElementById('story-comments').value = jsonData.comments;
                 document.getElementById('pages').innerHTML = '';
                 for (const [i, data] of Object.entries(jsonData.pages)) {
                     addPage(i, data);
@@ -107,28 +108,6 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('JSON copied to clipboard');
         }).catch(function (err) {
             alert('Could not copy JSON: ', err);
-        });
-    });
-
-    document.getElementById('info-button').addEventListener('click', function () {
-        var myModal = new bootstrap.Modal(document.getElementById('info-modal'));
-        myModal.show();
-    });
-
-    document.getElementById('flowchart-button').addEventListener('click', function () {
-        flowchartDiv.innerHTML = '';
-        document.querySelectorAll('.page').forEach(pageDiv => {
-            const i = pageDiv.id.split('-')[1];
-            const flowchartElement = document.createElement('div');
-            flowchartElement.className = 'flowchart-element';
-            flowchartElement.innerHTML = `<p class="btn btn-primary">${i}</p>`;
-            flowchartDiv.appendChild(flowchartElement);
-            
-            const optionA = jsonForm[`optionA-next-${i}`].value;
-            const optionB = jsonForm[`optionB-next-${i}`].value;
-            
-            if (optionA) addArrow(flowchartElement, optionA);
-            if (optionB) addArrow(flowchartElement, optionB);
         });
     });
 });
