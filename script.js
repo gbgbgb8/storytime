@@ -1,4 +1,5 @@
 const md = new markdownit();
+let discoveredStories = [];
 
 function setRandomSplashImage() {
   const randomNumber = Math.floor(Math.random() * 4) + 1;
@@ -19,12 +20,11 @@ async function isPlaceholderStory(folder) {
 
 async function discoverStories() {
   const storyFolders = Array.from({length: 99}, (_, i) => String(i + 1).padStart(2, '0'));
-  const storyList = [];
   for (const folder of storyFolders) {
     const isPlaceholder = await isPlaceholderStory(folder);
-    if (!isPlaceholder) storyList.push(folder);
+    if (!isPlaceholder) discoveredStories.push(folder);
   }
-  return storyList;
+  return discoveredStories;
 }
 
 async function populateStories() {
@@ -56,23 +56,19 @@ async function loadImageExists(src) {
 async function loadStory(storyName) {
   const response = await fetch(`stories/morestories/${storyName}/story.json`);
   const gameData = await response.json();
-
   async function updatePage(pageNumber) {
     const pageData = gameData.pages[pageNumber];
     const randomImageSuffix = String.fromCharCode(97 + Math.floor(Math.random() * 3));
     const imagePath = `stories/morestories/${storyName}/page${pageNumber}-${randomImageSuffix}.jpg`;
     const placeholderPath = `stories/morestories/${storyName}/placeholder-${randomImageSuffix}.jpg`;
-    
     const imageExists = await loadImageExists(imagePath);
     document.getElementById('game-image').src = imageExists ? imagePath : placeholderPath;
-    
     document.getElementById('narrative-text').innerHTML = md.render(pageData.text);
     document.getElementById('optionA').innerText = pageData.options[0].text;
     document.getElementById('optionB').innerText = pageData.options[1].text;
     document.getElementById('optionA').onclick = () => updatePage(pageData.options[0].nextPage);
     document.getElementById('optionB').onclick = () => updatePage(pageData.options[1].nextPage);
   }
-
   document.getElementById('splash-image').classList.add('d-none');
   document.getElementById('game-image').classList.remove('d-none');
   updatePage("1");
@@ -81,6 +77,12 @@ async function loadStory(storyName) {
 document.getElementById('mode-toggle').addEventListener('click', function() {
   document.body.classList.toggle('bg-dark');
   document.body.classList.toggle('text-white');
+  document.getElementById('fab-controls').classList.add('d-none');
+});
+
+document.getElementById('shuffle-story').addEventListener('click', function() {
+  const randomStory = discoveredStories[Math.floor(Math.random() * discoveredStories.length)];
+  loadStory(randomStory);
   document.getElementById('fab-controls').classList.add('d-none');
 });
 
