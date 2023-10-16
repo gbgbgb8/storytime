@@ -56,11 +56,9 @@ async function loadImageExists(src) {
 async function loadStory(storyName) {
   const response = await fetch(`stories/morestories/${storyName}/story.json`);
   const gameData = await response.json();
-  
-  // Populate new fields
-  document.getElementById('story-title').innerText = gameData.title;
-  document.getElementById('story-author').innerText = `by ${gameData.author}`;
-  document.getElementById('story-comments').innerText = gameData.comments;
+  document.getElementById('story-title').innerText = gameData.title || "";
+  document.getElementById('story-author').innerText = gameData.author ? `by ${gameData.author}` : "";
+  document.getElementById('story-comments').innerText = gameData.comments || "";
 
   async function updatePage(pageNumber) {
     const pageData = gameData.pages[pageNumber];
