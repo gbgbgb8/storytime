@@ -79,7 +79,8 @@ async function loadStory(storyName) {
 }
 
 document.getElementById('mode-toggle').addEventListener('click', function() {
-  document.body.classList.toggle('dark-mode');
+  document.body.classList.toggle('bg-dark');
+  document.body.classList.toggle('text-white');
   document.getElementById('fab-controls').classList.add('d-none');
 });
 
