@@ -94,7 +94,7 @@
       "options": [
         {
           "text": "Write back.",
-          "nextPage": ""
+          "nextPage": "9"
         },
         {
           "text": "Close the book and see what fish is stuck.",
@@ -115,7 +115,24 @@
         },
         {
           "text": "Ask the mermaid to be your friend.",
-          "nextPage": "9"
+          "nextPage": "10"
+        }
+      ]
+    },
+    "8": {
+      "text": "You turned your back. The water turned pink. You heard the mermaid crying.",
+      "metadata": {
+        "Setting": "",
+        "Time": ""
+      },
+      "options": [
+        {
+          "text": "Ask her to be your friend.",
+          "nextPage": "10"
+        },
+        {
+          "text": "Walk away.",
+          "nextPage": "99"
         }
       ]
     }
