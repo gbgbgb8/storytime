@@ -143,4 +143,5 @@ function displayFlowchart(nodes, edges) {
     const data = { nodes, edges };
     const options = {}; // Define your vis.js options here
     new vis.Network(container, data, options);
+    $('#flowchart-modal').modal('show');
 }
