@@ -135,7 +135,41 @@
         },
         {
           "text": "Walk away.",
-          "nextPage": "99"
+          "nextPage": "1"
+        }
+      ]
+    },
+    "9": {
+      "text": "You are enchanted and never stop writing.",
+      "metadata": {
+        "Setting": "",
+        "Time": ""
+      },
+      "options": [
+        {
+          "text": "Start over",
+          "nextPage": "1"
+        },
+        {
+          "text": "Start over",
+          "nextPage": "1"
+        }
+      ]
+    },
+    "10": {
+      "text": "She says \"Yes, I'll be your friend!\"\nSo you and the mermaid live happily ever after.",
+      "metadata": {
+        "Setting": "",
+        "Time": ""
+      },
+      "options": [
+        {
+          "text": "Start over",
+          "nextPage": "1"
+        },
+        {
+          "text": "Start over",
+          "nextPage": "1"
         }
       ]
     }
